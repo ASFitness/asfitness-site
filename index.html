@@ -307,6 +307,40 @@
     .power.slam .pstage { animation: shake .35s ease; }
     @keyframes shake { 25% { transform: translateX(-4px); } 50% { transform: translateX(4px); } 75% { transform: translateX(-2px); } }
 
+
+    /* TELEFONUL CARE SPUNE POVESTEA (derulare ca la Apple) */
+    .story { position: relative; height: 420vh; background: var(--bg); }
+    .story-pin { position: sticky; top: 0; height: 100vh; height: 100svh; overflow: hidden; display: flex; align-items: center; }
+    .story-pin .aurora i:nth-child(1) { left: 20%; top: 20%; opacity: .4; }
+    .story-grid { position: relative; z-index: 1; width: 100%; display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: center; }
+    .story-phone { position: relative; justify-self: center; width: min(300px, 62vw, calc((100vh - 190px) * .45)); perspective: 1200px; }
+    .story-pin { padding-top: 60px; }
+    .story-dev { position: relative; border-radius: 46px; padding: 11px; background: linear-gradient(160deg, #2c2645, #121019); border: 1px solid rgba(255,255,255,.14);
+      box-shadow: 0 50px 120px rgba(0,0,0,.65), 0 0 80px rgba(124,58,237,.25); transform: rotateY(var(--ry, -14deg)) rotateX(var(--rx, 6deg)) rotateZ(var(--rz, 0deg)); transition: transform .12s linear; will-change: transform; }
+    .story-screen { position: relative; border-radius: 36px; overflow: hidden; aspect-ratio: 780 / 1688; background: #000; }
+    .story-screen img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; opacity: 0; transform: scale(1.06); filter: blur(6px);
+      transition: opacity .6s ease, transform .9s cubic-bezier(.2,.8,.2,1), filter .6s ease; }
+    .story-screen img.on { opacity: 1; transform: none; filter: none; }
+    .story-glow { position: absolute; inset: -30% -40%; background: radial-gradient(circle, rgba(124,58,237,.45), transparent 60%); filter: blur(30px); z-index: -1; }
+    .story-steps { position: relative; min-height: 340px; }
+    .sstep { position: absolute; inset: 0; opacity: 0; transform: translateY(40px); filter: blur(8px); transition: opacity .6s ease, transform .7s cubic-bezier(.2,.8,.2,1), filter .6s ease; pointer-events: none; }
+    .sstep.on { opacity: 1; transform: none; filter: none; pointer-events: auto; }
+    .sstep .when { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 3px; color: var(--violet-l); font-size: 15px; }
+    .sstep h3 { font-family: 'Exo 2', sans-serif; font-style: italic; font-weight: 900; font-size: clamp(36px, 5vw, 64px); line-height: 1; margin: 12px 0 16px; }
+    .sstep p { color: var(--muted); font-size: 18px; max-width: 520px; margin: 0; }
+    .sdots { display: flex; gap: 10px; margin-top: 30px; }
+    .sdots i { width: 34px; height: 4px; border-radius: 4px; background: rgba(255,255,255,.12); overflow: hidden; position: relative; }
+    .sdots i b { position: absolute; inset: 0; transform-origin: 0 50%; transform: scaleX(0); background: linear-gradient(90deg, #7C3AED, #C4B5FD); }
+    @media (max-width: 860px) {
+      .story-grid { grid-template-columns: 1fr; gap: 22px; text-align: center; }
+      .story-phone { width: min(220px, 54vw, calc((100vh - 400px) * .45)); }
+      .story-steps { min-height: 200px; }
+      .sstep p { margin: 0 auto; font-size: 16px; }
+      .sstep h3 { margin: 8px 0 10px; }
+      .sdots { justify-content: center; margin-top: 16px; }
+    }
+    @media (prefers-reduced-motion: reduce) { .story { height: auto; } .story-pin { position: relative; height: auto; padding: 80px 0; } }
+
     /* apariție la derulare */
     .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
     .js .reveal.in { opacity: 1; transform: none; }
@@ -323,7 +357,7 @@
     <div class="wrap nav">
       <a class="brand" href="#top"><img src="img/icon-512.png" alt="" /><span><b class="chrome">ASFITNESS</b><small>DO IT NOW</small></span></a>
       <nav class="links">
-        <a href="#aplicatia" data-t="nav_app">Aplicația</a>
+        <a href="#povestea" data-t="nav_app">Aplicația</a>
         <a href="#pentru-cine" data-t="nav_who">Pentru cine</a>
         <a href="#antrenori" data-t="nav_coaches">Antrenori &amp; cluburi</a>
         <a href="#intrebari" data-t="nav_faq">Întrebări</a>
@@ -424,18 +458,40 @@
       </div>
     </section>
 
+    <section class="story" id="povestea" aria-label="O zi cu ASFitness">
+      <div class="story-pin">
+        <div class="aurora"><i></i><i></i></div>
+        <div class="wrap story-grid">
+          <div class="story-phone">
+            <div class="story-glow"></div>
+            <div class="story-dev" id="sdev">
+              <div class="story-screen">
+                <img class="on" src="img/app-azi.jpg" alt="" />
+                <img src="img/app-nutritie.jpg" alt="" loading="lazy" />
+                <img src="img/app-chef.jpg" alt="" loading="lazy" />
+                <img src="img/app-misiuni.jpg" alt="" loading="lazy" />
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="story-steps">
+              <div class="sstep on"><div class="when" data-t="sy1w">07:30 · DIMINEAȚA</div><h3 data-t="sy1">Cât de pregătit ești azi?</h3><p data-t="sy1p">Check-in de un minut și datele WHOOP: somn, HRV, puls. Inelul Pregătire îți spune dacă azi tragi tare sau te refaci.</p></div>
+              <div class="sstep"><div class="when" data-t="sy2w">12:00 · PRÂNZUL</div><h3 data-t="sy2">Mănânci pentru ziua ta.</h3><p data-t="sy2p">Țintele se schimbă singure după antrenament, meci sau zi liberă: calorii, carbohidrați, proteine, apă.</p></div>
+              <div class="sstep"><div class="when" data-t="sy3w">19:00 · SEARA</div><h3 data-t="sy3">Gătești din ce ai în casă.</h3><p data-t="sy3p">Bifezi ce ai în frigider, iar ASFitness Chef îți face meniul și lista de cumpărături.</p></div>
+              <div class="sstep"><div class="when" data-t="sy4w">22:00 · ÎNAINTE DE SOMN</div><h3 data-t="sy4">Mai bun decât ieri.</h3><p data-t="sy4p">Misiuni, serii și XP. Vezi cum crești de la o zi la alta, iar antrenorul tău vede totul.</p></div>
+            </div>
+            <div class="sdots" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i><i><b></b></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section id="aplicatia" style="background: var(--bg2); overflow: hidden">
       <div class="aurora" style="opacity:.5"><i></i><i></i></div>
       <div class="wrap" style="position:relative; z-index:1">
         <div class="kicker reveal" data-t="app_kicker">Aplicația</div>
         <h2 class="reveal d1"><span data-t="app_t1">Știi în fiecare dimineață</span> <span class="grad-text" data-t="app_t2">ce ai de făcut.</span></h2>
         <p class="lead reveal d2" data-t="app_lead">Aplicația îți arată cât de pregătit ești azi, ce antrenament faci, ce mănânci și cum progresezi. Fără foi de calcul, fără ghicit.</p>
-        <div class="phones">
-          <figure class="phone reveal d1"><img src="img/app-azi.jpg" alt="" loading="lazy" /><figcaption data-t="sh_azi">Azi: pregătire, somn, HRV</figcaption></figure>
-          <figure class="phone reveal d2"><img src="img/app-nutritie.jpg" alt="" loading="lazy" /><figcaption data-t="sh_nut">Nutriție după ziua ta</figcaption></figure>
-          <figure class="phone reveal d3"><img src="img/app-chef.jpg" alt="" loading="lazy" /><figcaption data-t="sh_chef">ASFitness Chef: meniul din ce ai în casă</figcaption></figure>
-          <figure class="phone reveal d4"><img src="img/app-misiuni.jpg" alt="" loading="lazy" /><figcaption data-t="sh_mis">Misiuni, serii și niveluri</figcaption></figure>
-        </div>
         <div class="features">
           <div class="feat reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#E9D5FF" stroke-width="2" stroke-linecap="round"><path d="M3 12h4l2-6 4 12 2-6h6" /></svg></div><div><b data-t="f1">Pregătirea zilei</b><span data-t="f1p">Check-in de dimineață + date WHOOP: somn, HRV, puls în repaus.</span></div></div>
           <div class="feat reveal d1"><div class="ic"><svg viewBox="0 0 24 24" fill="#E9D5FF"><path d="M2 9h2v6H2zM5 7h2v10H5zM17 7h2v10h-2zM20 9h2v6h-2zM7 11h10v2H7z" /></svg></div><div><b data-t="f2">Antrenament &amp; program</b><span data-t="f2p">Programul tău, seriile, greutățile, recordurile și încărcarea săptămânii.</span></div></div>
@@ -608,6 +664,10 @@
       q4: 'Is my data safe?', a4: 'Yes. Each athlete sees only their own data, and a coach sees only the athletes in their team. We don’t sell data or use it for ads. Details in our <a href="confidentialitate.html?lang=en">privacy policy</a>.',
       q5: 'Can I use the app with my team or clients?', a5: 'Yes. Create your team, give your athletes the team code and see them all on one screen. Message us and we’ll help you get started.',
       q6: 'Which languages?', a6: 'Romanian, English, Spanish and French.',
+      sy1w: '07:30 · MORNING', sy1: 'How ready are you today?', sy1p: 'A one-minute check-in plus WHOOP data: sleep, HRV, heart rate. The Readiness ring tells you whether to push or recover today.',
+      sy2w: '12:00 · LUNCH', sy2: 'Eat for your day.', sy2p: 'Targets change on their own for training, match or rest days: calories, carbs, protein, water.',
+      sy3w: '19:00 · EVENING', sy3: 'Cook from what you have.', sy3p: 'Tick what’s in your fridge and ASFitness Chef builds your menu and shopping list.',
+      sy4w: '22:00 · BEFORE BED', sy4: 'Better than yesterday.', sy4p: 'Missions, streaks and XP. Watch yourself grow day by day, and your coach sees it all.',
       p_hint: 'Tap the logo for another rep',
       quote: 'EVERY DAY COUNTS. DO IT NOW.', privacy: 'Privacy policy',
     };
@@ -820,6 +880,40 @@
       setTimeout(() => { if (!sec.classList.contains('up')) { sec.classList.add('up', 'slam'); } }, 9000); // siguranță
       stage.addEventListener('click', rep);
       stage.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); rep(); } });
+    })();
+
+
+    // ===== TELEFONUL CARE SPUNE POVESTEA: derulezi → ecranul și textul se schimbă, telefonul se rotește ușor =====
+    (() => {
+      const sec = document.getElementById('povestea');
+      if (!sec) return;
+      const imgs = [...sec.querySelectorAll('.story-screen img')], steps = [...sec.querySelectorAll('.sstep')], bars = [...sec.querySelectorAll('.sdots b')];
+      const dev = document.getElementById('sdev');
+      const N = steps.length;
+      let cur = 0, ticking = false;
+      const calmS = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const update = () => {
+        ticking = false;
+        const r = sec.getBoundingClientRect();
+        const total = sec.offsetHeight - innerHeight;
+        const p = Math.min(1, Math.max(0, -r.top / (total || 1))); // 0 → 1 de-a lungul secțiunii
+        const idx = Math.min(N - 1, Math.floor(p * N));
+        if (idx !== cur) {
+          imgs.forEach((im, j) => im.classList.toggle('on', j === idx));
+          steps.forEach((st, j) => st.classList.toggle('on', j === idx));
+          cur = idx;
+        }
+        bars.forEach((b, j) => (b.style.transform = `scaleX(${Math.min(1, Math.max(0, p * N - j))})`));
+        if (!calmS) {
+          const t = p * 2 - 1; // -1 → 1
+          dev.style.setProperty('--ry', `${(-14 + 28 * p).toFixed(2)}deg`);
+          dev.style.setProperty('--rx', `${(6 - 4 * Math.abs(t)).toFixed(2)}deg`);
+          dev.style.setProperty('--rz', `${(Math.sin(p * Math.PI * 2) * 1.5).toFixed(2)}deg`);
+        }
+      };
+      window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      window.addEventListener('resize', update);
+      update();
     })();
 
     // bara de sus capătă fundal după ce derulezi
