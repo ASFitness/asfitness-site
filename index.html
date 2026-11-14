@@ -274,10 +274,11 @@
     .plogo { position: absolute; inset: 0; border-radius: 50%; transform-style: preserve-3d;
       transform: translateY(90px) rotateX(74deg) scale(.62); filter: brightness(.25) saturate(.6); opacity: .0;
       transition: transform 1.25s cubic-bezier(.16,1.12,.3,1), filter 1.1s ease, opacity .6s ease; }
-    .plogo { box-shadow: 0 0 0 3px rgba(167,139,250,.55), 0 0 60px rgba(124,58,237,.65), 0 0 140px rgba(124,58,237,.35); background: #000; }
-    .plogo img { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; opacity: 0; transition: opacity .17s linear; }
+    /* fundal opac: lumina mov în mijloc, iar marginile exact culoarea paginii, ca negrul pozelor să se topească fără pătrat */
+    .plogo { border-radius: 0 !important; background: radial-gradient(circle at 50% 50%, #3B1E78 0%, #241248 30%, #120A24 50%, #07060B 70%); }
+    .plogo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .12s linear; mix-blend-mode: lighten; }
     .plogo img.on { opacity: 1; }
-    .plogo .shine { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; pointer-events: none; }
+    .plogo .shine { position: absolute; inset: 8%; border-radius: 50%; overflow: hidden; pointer-events: none; mix-blend-mode: screen; }
     .plogo .shine::before { content: ''; position: absolute; top: -20%; bottom: -20%; width: 38%; left: -60%; transform: skewX(-18deg);
       background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), rgba(221,214,254,.35), transparent); mix-blend-mode: screen; }
     .pshadow { position: absolute; left: 12%; right: 12%; bottom: -9%; height: 14%; border-radius: 50%; background: radial-gradient(closest-side, rgba(124,58,237,.55), transparent); filter: blur(10px); transform: scale(.4); opacity: 0; transition: transform 1.2s ease, opacity 1.2s ease; }
@@ -364,12 +365,11 @@
 
 
     <section class="power" id="power" aria-label="DO IT NOW">
-      <div class="aurora"><i></i></div>
       <div class="wrap" style="position:relative; z-index:1">
         <div class="pstage" id="pstage" role="button" tabindex="0" aria-label="Încă o repetare">
           <div class="pshadow"></div>
           <div class="pring"></div><div class="pring r2"></div>
-          <div class="plogo"><img class="on" src="img/rep/f1.jpg" alt="ASFitness" /><img src="img/rep/f2.jpg" alt="" /><img src="img/rep/f3.jpg" alt="" /><img src="img/rep/f4.jpg" alt="" /><div class="shine"></div></div>
+          <div class="plogo"><img class="on" src="img/rep/f1.jpg" alt="ASFitness" /><img src="img/rep/f2.jpg" alt="" /><img src="img/rep/f3.jpg" alt="" /><img src="img/rep/f4.jpg" alt="" /><img src="img/rep/f5.jpg" alt="" /><img src="img/rep/f6.jpg" alt="" /><div class="shine"></div></div>
         </div>
         <div class="ptext chrome">DO IT NOW.</div>
         <div class="phint" data-t="p_hint">Apasă pe logo pentru încă o repetare</div>
@@ -785,7 +785,7 @@
       const imgs = [...sec.querySelectorAll('.plogo img')];
       const show = (k) => imgs.forEach((im, j) => im.classList.toggle('on', j === k));
       // cadrele repetării (din GIF-ul ASFitness): urcă, ține sus, coboară, revine exact în logo
-      const SEQ = [[1, 230], [2, 230], [3, 260], [3, 700], [2, 300], [1, 300], [0, 0]];
+      const SEQ = [[1, 450], [2, 450], [3, 900], [4, 450], [5, 750], [0, 0]]; // ca în GIF: 450 · 450 · 900 · 450 · 750 ms
       const rep = () => {
         if (busy) return;
         busy = true;
@@ -793,7 +793,7 @@
         SEQ.forEach(([k, d], n) => {
           setTimeout(() => {
             show(k);
-            if (n === 2) { // a ajuns sus: lumină, val, scântei
+            if (n === 3) { // brațele întinse sus: lumină, val, scântei
               sec.classList.remove('peak'); void sec.offsetWidth; sec.classList.add('peak');
               if (first) { sec.classList.add('slam'); first = false; }
             }
@@ -816,7 +816,7 @@
         }), { threshold: 0.35 });
         o.observe(sec);
       } else go();
-      if (!calmMode) setInterval(() => { if (visible && seen && !document.hidden) rep(); }, 6500);
+      if (!calmMode) setInterval(() => { if (visible && seen && !document.hidden) rep(); }, 4600); // ca GIF-ul: 1 s pe logo, apoi repetarea
       setTimeout(() => { if (!sec.classList.contains('up')) { sec.classList.add('up', 'slam'); } }, 9000); // siguranță
       stage.addEventListener('click', rep);
       stage.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); rep(); } });
