@@ -227,6 +227,49 @@
     .faq details[open] summary::after { transform: rotate(45deg); }
     .faq details p { margin: 0 0 20px; color: var(--muted); font-size: 16px; }
 
+
+    button.btn { font-family: inherit; color: inherit; cursor: pointer; }
+    .btn.big { font-size: 18px; padding: 18px 28px; }
+    .btn .mins { font-weight: 500; opacity: .8; font-size: .85em; }
+    .btn.ghost { background: transparent; border-color: transparent; color: var(--muted); padding-left: 10px; padding-right: 10px; }
+    .btn.ghost:hover { color: var(--text); background: transparent; }
+
+    /* QUIZ „Fă primul pas” */
+    .quiz { position: fixed; inset: 0; z-index: 100; display: none; background: rgba(7,6,11,.92); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); overflow-y: auto; }
+    .quiz.open { display: block; animation: qin .35s ease; }
+    @keyframes qin { from { opacity: 0; } }
+    .quiz .aurora { position: fixed; }
+    .qbox { position: relative; z-index: 1; max-width: 640px; margin: 0 auto; min-height: 100%; padding: 22px 20px 40px; display: flex; flex-direction: column; }
+    .qtop { display: flex; align-items: center; gap: 14px; }
+    .qbar { flex: 1; height: 6px; border-radius: 6px; background: rgba(255,255,255,.08); overflow: hidden; }
+    .qbar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #6D28D9, #A78BFA, #EDE9FE); border-radius: 6px; transition: width .5s cubic-bezier(.2,.8,.2,1); }
+    .qicon { width: 42px; height: 42px; border-radius: 50%; border: 1px solid var(--border); background: rgba(255,255,255,.04); color: var(--text); display: grid; place-items: center; cursor: pointer; flex-shrink: 0; }
+    .qicon svg { width: 20px; height: 20px; }
+    .qicon[hidden] { visibility: hidden; display: grid; }
+    .qstep { margin-top: 8vh; animation: qslide .45s cubic-bezier(.2,.8,.2,1); }
+    @keyframes qslide { from { opacity: 0; transform: translateX(24px); } }
+    .qnum { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 3px; color: var(--violet-l); font-size: 14px; }
+    .qstep h3 { font-family: 'Exo 2', sans-serif; font-style: italic; font-weight: 900; font-size: clamp(30px, 6vw, 44px); line-height: 1.05; margin: 10px 0 26px; }
+    .qopts { display: grid; gap: 12px; }
+    .qopt { display: flex; align-items: center; gap: 14px; width: 100%; text-align: left; padding: 18px 20px; border-radius: 18px; border: 1px solid var(--border); background: var(--card); color: var(--text); font: 600 17px 'DM Sans', sans-serif; cursor: pointer; transition: border-color .2s, background .2s, transform .15s; }
+    .qopt:hover { border-color: rgba(167,139,250,.55); background: rgba(124,58,237,.14); }
+    .qopt:active { transform: scale(.98); }
+    .qopt.sel { border-color: var(--violet-l); background: rgba(124,58,237,.28); }
+    .qopt .k { width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; background: rgba(124,58,237,.3); font-size: 14px; font-weight: 700; flex-shrink: 0; }
+    .qres { margin-top: 5vh; animation: qslide .5s cubic-bezier(.2,.8,.2,1); }
+    .qcard { border-radius: 26px; padding: 26px 24px; background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,.45), transparent 60%), linear-gradient(160deg, #241447, #120B22 70%); border: 1px solid rgba(196,181,253,.3); box-shadow: 0 30px 80px rgba(124,58,237,.3); }
+    .qcard .lbl { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; letter-spacing: 3px; color: var(--violet-l); font-size: 14px; }
+    .qcard .prof { font-family: 'Exo 2', sans-serif; font-style: italic; font-weight: 900; font-size: clamp(30px, 6.5vw, 46px); line-height: 1.02; margin: 8px 0 18px; }
+    .qpair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 18px; }
+    .qpair div { background: rgba(255,255,255,.05); border: 1px solid var(--border); border-radius: 16px; padding: 12px 14px; }
+    .qpair small { display: block; color: var(--muted); font-size: 12.5px; }
+    .qpair b { font-size: 17px; }
+    .qtips { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+    .qtips li { display: flex; gap: 12px; color: #DCD7EA; font-size: 15.5px; }
+    .qtips li::before { content: ''; flex-shrink: 0; width: 8px; height: 8px; margin-top: 8px; border-radius: 50%; background: var(--violet-l); box-shadow: 0 0 12px rgba(167,139,250,.9); }
+    .qres .btns { margin-top: 24px; }
+    .qnote { color: var(--muted); font-size: 13px; margin-top: 14px; }
+
     /* apariție la derulare */
     .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
     .js .reveal.in { opacity: 1; transform: none; }
@@ -267,14 +310,12 @@
           <div class="sig reveal d2"><span class="chrome">ME</span><span class="vs">vs</span><span class="me2">me.</span></div>
           <p class="lead reveal d2" data-t="hero_lead">Antrenament, recuperare, nutriție și mindset într-o singură aplicație. Pentru sportivi, oameni activi și antrenorii lor.</p>
           <div class="btns reveal d3">
-            <a class="btn primary" href="https://asfitness-app.expo.app" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3" /><path d="M11 18h2" /></svg>
-              <span data-t="cta_app">Intră în aplicație</span>
-            </a>
-            <a class="btn" href="https://wa.me/40786775538" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="#C4B5FD"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.2z" /></svg>
-              <span data-t="cta_coach">Lucrează cu ASFitness</span>
-            </a>
+            <button type="button" class="btn primary big" data-quiz>
+              <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
+              <span><span data-t="cta_step">Fă primul pas</span> <small class="mins" data-t="cta_min">· 1 minut</small></span>
+            </button>
+            <a class="btn ghost" href="https://asfitness-app.expo.app" target="_blank" rel="noopener"><span data-t="cta_have">Am deja cont</span></a>
+          </div>
           </div>
         </div>
         <div class="stage reveal d2">
@@ -361,7 +402,7 @@
           <div class="feat reveal d1"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#E9D5FF" stroke-width="2" stroke-linecap="round"><path d="M6 2h9l5 5v15H6z" /><path d="M14 2v6h6M9 13h8M9 17h6" /></svg></div><div><b data-t="f5">Rapoarte PDF</b><span data-t="f5p">Raportul zilei, al săptămânii, de meci sau de nutriție, gata de trimis.</span></div></div>
           <div class="feat reveal d2"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#E9D5FF" stroke-width="2" stroke-linecap="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z" /></svg></div><div><b data-t="f6">Chat &amp; sesiuni live</b><span data-t="f6p">Vorbești direct cu antrenorul și te antrenezi cu el, live, de oriunde.</span></div></div>
         </div>
-        <div class="btns reveal"><a class="btn primary" href="https://asfitness-app.expo.app" target="_blank" rel="noopener"><span data-t="cta_try">Încearcă aplicația</span></a></div>
+        <div class="btns reveal"><button type="button" class="btn primary" data-quiz><span data-t="cta_try">Fă primul pas · 1 minut</span></button></div>
       </div>
     </section>
 
@@ -434,7 +475,7 @@
           <h2 data-t="cta_title">Începe azi. Fii cu 1% mai bun mâine.</h2>
           <p data-t="cta_p">Intră în aplicație sau scrie-ne și construim împreună planul tău.</p>
           <div class="btns">
-            <a class="btn primary" href="https://asfitness-app.expo.app" target="_blank" rel="noopener"><span data-t="cta_app2">Intră în aplicație</span></a>
+            <button type="button" class="btn primary" data-quiz><span data-t="cta_app2">Fă primul pas</span></button>
             <a class="btn" href="https://wa.me/40786775538" target="_blank" rel="noopener"><span data-t="cta_wa">Scrie-ne pe WhatsApp</span></a>
           </div>
         </div>
@@ -456,6 +497,19 @@
     </section>
   </main>
 
+
+  <div class="quiz" id="quiz" role="dialog" aria-modal="true" aria-label="Fă primul pas">
+    <div class="aurora"><i></i><i></i></div>
+    <div class="qbox">
+      <div class="qtop">
+        <button type="button" class="qicon" id="qback" aria-label="Înapoi" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6" /></svg></button>
+        <div class="qbar"><i id="qfill"></i></div>
+        <button type="button" class="qicon" id="qclose" aria-label="Închide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg></button>
+      </div>
+      <div id="qbody"></div>
+    </div>
+  </div>
+
   <footer>
     <div class="wrap">
       <span class="foot-quote" data-t="quote">FIECARE ZI CONTEAZĂ. DO IT NOW.</span>
@@ -469,7 +523,7 @@
       nav_app: 'The app', nav_who: 'Who it’s for', nav_coaches: 'Coaches & clubs', nav_faq: 'FAQ', nav_contact: 'Contact',
       hero_new: 'NEW', hero_pill: 'Your week: your progress, ready for Instagram', hero_t1: '', hero_t2: 'THAN YESTERDAY.',
       hero_lead: 'Training, recovery, nutrition and mindset in one app. For athletes, active people and their coaches.',
-      cta_app: 'Open the app', cta_coach: 'Work with ASFitness',
+      cta_step: 'Take the first step', cta_min: '· 1 minute', cta_have: 'I already have an account',
       ch1: 'Readiness 86%', ch1s: 'You’re ready today', ch2: 'New record', ch2s: 'Bench press · 85 kg', ch3: 'Your week: 4/4', ch3s: 'Well done, Andrei!',
       who_kicker: 'Who it’s for', who_t1: 'One place for', who_t2: 'everything that makes you better.',
       who_fb: 'Football players', who_fb_p: 'Morning readiness, training load, match-day countdown (MD), GPS and WHOOP data, match reports.',
@@ -486,7 +540,7 @@
       f4: 'Missions & motivation', f4p: 'Streaks, XP, badges and “Your week”, ready to share on Instagram.',
       f5: 'PDF reports', f5p: 'Daily, weekly, match and nutrition reports, ready to send.',
       f6: 'Chat & live sessions', f6p: 'Talk directly to your coach and train together, live, from anywhere.',
-      cta_try: 'Try the app',
+      cta_try: 'Take the first step · 1 minute',
       pil_kicker: 'The 4 ASFitness pillars', pil_t1: 'Performance never comes', pil_t2: 'from just one place.',
       p1: 'Focus & discipline', p2: 'Strength & power', p3: 'Endurance & work capacity', p4: 'Fuel & recharge',
       co_kicker: 'For coaches, gyms and clubs', co_t1: 'See your whole team', co_t2: 'at a glance.',
@@ -500,7 +554,7 @@
       s1: 'Guides & courses', s1p: 'ASFitness PDF guides and courses on training, nutrition and recovery.',
       s2: 'ASFitness store', s2p: 'Gear with the ASFitness logo: t-shirts, hoodies, shakers.',
       s3: 'ASFitness stories', s3p: 'The athletes we work with and their journey, in their own words.',
-      cta_title: 'Start today. Be 1% better tomorrow.', cta_p: 'Open the app or message us and we’ll build your plan together.', cta_app2: 'Open the app', cta_wa: 'Message us on WhatsApp',
+      cta_title: 'Start today. Be 1% better tomorrow.', cta_p: 'Open the app or message us and we’ll build your plan together.', cta_app2: 'Take the first step', cta_wa: 'Message us on WhatsApp',
       how_kicker: 'How it works', how_t1: 'Three steps.', how_t2: 'Every day.',
       hw1: 'Tell us how you feel', hw1p: 'A morning check-in in under a minute: sleep, energy, soreness. With WHOOP, the data comes in by itself.',
       hw2: 'Know what to do', hw2p: 'Today’s readiness, workout, meals and recommendation, fitted to you and to today.',
@@ -554,6 +608,115 @@
       start = q || localStorage.getItem('asf.lang') || ((navigator.language || 'ro').toLowerCase().startsWith('ro') ? 'ro' : 'en');
     } catch (e) {}
     if (start === 'en') setLang('en'); else startRot('ro');
+
+
+    // ===== QUIZ „Fă primul pas” =====
+    // 6 întrebări → profilul tău + 3 sfaturi → aplicația, cu răspunsurile în adresă (pe site nu se salvează nimic).
+    const APP = 'https://asfitness-app.expo.app/';
+    const Q = [
+      { id: 'sport', ro: 'Ce sport faci?', en: 'What’s your sport?', o: [
+        ['fotbal', 'Fotbal', 'Football'], ['fitness', 'Fitness / sală', 'Fitness / gym'], ['hybrid', 'Mai multe sporturi', 'Several sports'] ] },
+      { id: 'goal', ro: 'Ce vrei cel mai mult?', en: 'What do you want most?', o: [
+        ['strength', 'Forță', 'Strength'], ['speed', 'Viteză', 'Speed'], ['cut', 'Să slăbesc', 'Lose fat'], ['mass', 'Masă musculară', 'Build muscle'], ['health', 'Formă generală', 'Overall fitness'] ] },
+      { id: 'days', ro: 'De câte ori te antrenezi pe săptămână?', en: 'How many times a week do you train?', o: [
+        ['2', '1–2 ori', '1–2 times'], ['4', '3–4 ori', '3–4 times'], ['5', '5 sau mai mult', '5 or more'] ] },
+      { id: 'sleep', ro: 'Cât dormi de obicei?', en: 'How much do you usually sleep?', o: [
+        ['5', 'Sub 6 ore', 'Under 6 hours'], ['6', '6–7 ore', '6–7 hours'], ['8', 'Peste 7 ore', 'Over 7 hours'] ] },
+      { id: 'feel', ro: 'Cum te simți de obicei dimineața?', en: 'How do you usually feel in the morning?', o: [
+        ['tired', 'Obosit', 'Tired'], ['ok', 'Ok', 'Okay'], ['great', 'Plin de energie', 'Full of energy'] ] },
+      { id: 'block', ro: 'Ce te oprește cel mai des?', en: 'What holds you back most often?', o: [
+        ['time', 'Timpul', 'Time'], ['motivation', 'Motivația', 'Motivation'], ['plan', 'Nu știu exact ce să fac', 'Not knowing what to do'], ['pain', 'Durerile / accidentările', 'Pain / injuries'] ] },
+    ];
+    const T = {
+      ro: { q: 'ÎNTREBAREA', of: 'DIN', you: 'PROFILUL TĂU ASF', strong: 'Punctul tău forte', work: 'De lucrat', week: 'pe săptămână', go: 'Primește planul complet', redo: 'Refă testul',
+        note: 'Se deschide aplicația ASFitness, cu răspunsurile tale deja completate. Pe site nu salvăm nimic.',
+        sport: { fotbal: 'FOTBALIST', fitness: 'SPORTIV DE SALĂ', hybrid: 'SPORTIV HYBRID' },
+        goal: { strength: 'FORȚĂ', speed: 'VITEZĂ', cut: 'DEFINIRE', mass: 'MASĂ', health: 'FORMĂ' },
+        days: { 2: '1–2 zile', 4: '3–4 zile', 5: '5+ zile' },
+        strongs: { days: 'consecvența', sleep: 'somnul', feel: 'energia', start: 'decizia de a începe' },
+        works: { sleep: 'somnul', time: 'organizarea timpului', motivation: 'motivația zilnică', plan: 'un plan clar', pain: 'recuperarea' },
+        tips: {
+          sleep: 'Țintește 7–9 ore de somn. E cel mai ieftin și mai puternic „supliment” pentru performanță.',
+          time: 'Antrenamente de 30–45 de minute, bine făcute, sunt suficiente ca să progresezi.',
+          motivation: 'Nu aștepta motivația: misiunile, seriile și „Săptămâna ta” te țin în joc și în zilele grele.',
+          plan: 'În aplicație știi în fiecare dimineață exact ce ai de făcut: antrenament, mese, recuperare.',
+          pain: 'Durerea nu se ignoră: o raportezi pe harta corpului din aplicație, iar antrenorul o vede imediat.',
+          strength: 'Forța crește prin progresie: puțin mai greu, săptămână de săptămână, cu tehnică bună.',
+          speed: 'Viteza crește cu sprinturi scurte și pauze complete între ele, când ești odihnit.',
+          cut: 'La slăbit, proteina la fiecare masă te ajută să păstrezi mușchiul.',
+          mass: 'Masa musculară vine din antrenament greu, mâncare suficientă și somn.',
+          health: 'Mișcare zilnică și 2–3 antrenamente de forță pe săptămână: formă pentru toată viața.',
+          tired: 'Fă check-in-ul de dimineață: afli când să tragi tare și când e mai bine să te refaci.',
+          few: 'Două antrenamente făcute bine bat cinci făcute pe jumătate. Constanța câștigă.',
+          many: 'La 5+ antrenamente pe săptămână, recuperarea contează cât antrenamentul.',
+        } },
+      en: { q: 'QUESTION', of: 'OF', you: 'YOUR ASF PROFILE', strong: 'Your strength', work: 'To work on', week: 'a week', go: 'Get your full plan', redo: 'Retake the test',
+        note: 'The ASFitness app opens with your answers already filled in. Nothing is saved on this site.',
+        sport: { fotbal: 'FOOTBALLER', fitness: 'GYM ATHLETE', hybrid: 'HYBRID ATHLETE' },
+        goal: { strength: 'STRENGTH', speed: 'SPEED', cut: 'LEAN', mass: 'MUSCLE', health: 'FITNESS' },
+        days: { 2: '1–2 days', 4: '3–4 days', 5: '5+ days' },
+        strongs: { days: 'consistency', sleep: 'your sleep', feel: 'your energy', start: 'deciding to start' },
+        works: { sleep: 'your sleep', time: 'time management', motivation: 'daily motivation', plan: 'a clear plan', pain: 'recovery' },
+        tips: {
+          sleep: 'Aim for 7–9 hours of sleep. It’s the cheapest and most powerful performance “supplement”.',
+          time: 'Well-done 30–45 minute workouts are enough to keep progressing.',
+          motivation: 'Don’t wait for motivation: missions, streaks and “Your week” keep you going on hard days.',
+          plan: 'In the app you know every morning exactly what to do: training, meals, recovery.',
+          pain: 'Never ignore pain: report it on the body map in the app and your coach sees it right away.',
+          strength: 'Strength grows through progression: a little heavier, week after week, with good technique.',
+          speed: 'Speed grows with short sprints and full rest between them, when you’re fresh.',
+          cut: 'When losing fat, protein at every meal helps you keep your muscle.',
+          mass: 'Muscle comes from hard training, enough food and sleep.',
+          health: 'Daily movement and 2–3 strength sessions a week: fitness for life.',
+          tired: 'Do the morning check-in: you’ll know when to push and when to recover.',
+          few: 'Two workouts done well beat five done halfway. Consistency wins.',
+          many: 'At 5+ workouts a week, recovery matters as much as training.',
+        } },
+    };
+    const quiz = document.getElementById('quiz'), qbody = document.getElementById('qbody'), qfill = document.getElementById('qfill'), qback = document.getElementById('qback');
+    let qi = 0, ans = {};
+    const L = () => (document.documentElement.lang === 'en' ? 'en' : 'ro');
+    function renderQ() {
+      const l = L(), t = T[l];
+      qback.hidden = qi === 0;
+      if (qi >= Q.length) return renderResult();
+      qfill.style.width = `${(qi / Q.length) * 100}%`;
+      const q = Q[qi];
+      qbody.innerHTML = `<div class="qstep"><div class="qnum">${t.q} ${qi + 1} ${t.of} ${Q.length}</div><h3>${q[l]}</h3><div class="qopts">${q.o
+        .map((o, k) => `<button type="button" class="qopt${ans[q.id] === o[0] ? ' sel' : ''}" data-v="${o[0]}"><span class="k">${String.fromCharCode(65 + k)}</span>${l === 'en' ? o[2] : o[1]}</button>`)
+        .join('')}</div></div>`;
+      qbody.querySelectorAll('.qopt').forEach((b) => b.addEventListener('click', () => {
+        ans[q.id] = b.dataset.v;
+        b.classList.add('sel');
+        setTimeout(() => { qi++; renderQ(); }, 220);
+      }));
+    }
+    function renderResult() {
+      const l = L(), t = T[l];
+      qfill.style.width = '100%';
+      const strong = ans.days === '5' ? 'days' : ans.sleep === '8' ? 'sleep' : ans.feel === 'great' ? 'feel' : 'start';
+      const work = ans.sleep === '5' ? 'sleep' : ans.block;
+      const order = [ans.sleep === '5' && 'sleep', ans.block, ans.goal, ans.feel === 'tired' && 'tired', ans.days === '2' ? 'few' : ans.days === '5' ? 'many' : null, 'plan', 'motivation'];
+      const tips = [...new Set(order.filter(Boolean))].filter((k) => t.tips[k]).slice(0, 3);
+      const params = new URLSearchParams({ asf_sport: ans.sport, asf_goal: ans.goal, asf_days: ans.days, asf_sleep: ans.sleep, asf_feel: ans.feel, asf_block: ans.block });
+      qbody.innerHTML = `<div class="qres"><div class="qcard">
+          <div class="lbl">${t.you}</div>
+          <div class="prof chrome">${t.sport[ans.sport]}<br /><span class="grad-text">${t.goal[ans.goal]}</span> · ${t.days[ans.days]}</div>
+          <div class="qpair"><div><small>${t.strong}</small><b>${t.strongs[strong]}</b></div><div><small>${t.work}</small><b>${t.works[work]}</b></div></div>
+          <ul class="qtips">${tips.map((k) => `<li>${t.tips[k]}</li>`).join('')}</ul>
+        </div>
+        <div class="btns"><a class="btn primary big" href="${APP}?${params}" rel="noopener">${t.go} <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg></a>
+        <button type="button" class="btn ghost" id="qredo">${t.redo}</button></div>
+        <p class="qnote">${t.note}</p></div>`;
+      document.getElementById('qredo').addEventListener('click', () => { qi = 0; ans = {}; renderQ(); });
+    }
+    function openQuiz() { qi = 0; ans = {}; quiz.classList.add('open'); document.body.style.overflow = 'hidden'; renderQ(); }
+    function closeQuiz() { quiz.classList.remove('open'); document.body.style.overflow = ''; }
+    document.querySelectorAll('[data-quiz]').forEach((b) => b.addEventListener('click', openQuiz));
+    document.getElementById('qclose').addEventListener('click', closeQuiz);
+    qback.addEventListener('click', () => { if (qi > 0) { qi--; renderQ(); } });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && quiz.classList.contains('open')) closeQuiz(); });
+    if (location.hash === '#primul-pas') openQuiz();
 
     // bara de sus capătă fundal după ce derulezi
     const hdr = document.getElementById('hdr');
