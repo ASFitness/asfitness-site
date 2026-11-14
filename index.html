@@ -341,6 +341,27 @@
     }
     @media (prefers-reduced-motion: reduce) { .story { height: auto; } .story-pin { position: relative; height: auto; padding: 80px 0; } }
 
+
+    /* PREȚURI (deocamdată fără sume) */
+    .plans { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 44px; align-items: stretch; }
+    @media (max-width: 1100px) { .plans { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 620px) { .plans { grid-template-columns: 1fr; } }
+    .plan { position: relative; display: flex; flex-direction: column; padding: 26px 22px 22px; border-radius: 24px; background: var(--card); border: 1px solid var(--border); }
+    .plan.hot { border-color: rgba(167,139,250,.55); box-shadow: 0 24px 70px rgba(124,58,237,.25); background: linear-gradient(180deg, rgba(124,58,237,.16), var(--card) 40%); }
+    .plan.elite { background: radial-gradient(ellipse at 50% 0%, rgba(139,92,246,.35), transparent 55%), linear-gradient(170deg, #1E1238, #0E0A1A); border-color: rgba(196,181,253,.4); }
+    .plan .badge { position: absolute; top: -12px; left: 22px; font-size: 11.5px; font-weight: 700; letter-spacing: 1px; padding: 5px 12px; border-radius: 999px; background: var(--grad-btn); }
+    .plan h3 { font-family: 'Exo 2', sans-serif; font-style: italic; font-weight: 900; font-size: 30px; margin: 4px 0 6px; }
+    .plan .for { color: var(--muted); font-size: 14.5px; min-height: 44px; }
+    .plan .price { font-family: 'Exo 2', sans-serif; font-style: italic; font-weight: 900; font-size: 28px; margin: 14px 0 4px; }
+    .plan .price small { font-family: 'DM Sans', sans-serif; font-style: normal; font-weight: 500; font-size: 13px; color: var(--muted); display: block; margin-top: 2px; }
+    .plan ul { list-style: none; padding: 0; margin: 16px 0 22px; display: grid; gap: 10px; flex: 1; align-content: start; }
+    .plan li { display: flex; gap: 10px; font-size: 14.5px; color: #D8D3E8; line-height: 1.4; }
+    .plan li::before { content: ''; flex-shrink: 0; width: 18px; height: 18px; margin-top: 1px; border-radius: 50%; background: rgba(124,58,237,.35) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23EDE9FE' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center / 11px no-repeat; }
+    .plan li.plus { color: var(--violet-l); font-weight: 600; }
+    .plan li.plus::before { background-color: transparent; border: 1px solid rgba(167,139,250,.5); }
+    .plan .btn { justify-content: center; width: 100%; }
+    .plans-note { color: var(--muted); font-size: 14px; margin-top: 18px; }
+
     /* apariție la derulare */
     .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
     .js .reveal.in { opacity: 1; transform: none; }
@@ -360,6 +381,7 @@
         <a href="#povestea" data-t="nav_app">Aplicația</a>
         <a href="#pentru-cine" data-t="nav_who">Pentru cine</a>
         <a href="#antrenori" data-t="nav_coaches">Antrenori &amp; cluburi</a>
+        <a href="#preturi" data-t="nav_price">Abonamente</a>
         <a href="#intrebari" data-t="nav_faq">Întrebări</a>
         <a href="#contact" data-t="nav_contact">Contact</a>
       </nav>
@@ -552,6 +574,74 @@
     </section>
 
 
+    <section id="preturi">
+      <div class="wrap">
+        <div class="kicker reveal" data-t="pr_kicker">Abonamente</div>
+        <h2 class="reveal d1"><span data-t="pr_t1">Alege cât de departe</span> <span class="grad-text" data-t="pr_t2">vrei să mergi.</span></h2>
+        <p class="lead reveal d2" data-t="pr_lead">Începi gratuit. Treci la nivelul următor doar când simți că ai nevoie. Fără costuri ascunse.</p>
+        <div class="plans">
+          <div class="plan reveal d1">
+            <h3>Standard</h3>
+            <div class="for" data-t="pl1f">Pentru oricine vrea să înceapă.</div>
+            <div class="price" data-t="pl1p">Gratuit</div>
+            <ul>
+              <li data-t="pl1a">Check-in de dimineață și inelele ASF</li>
+              <li data-t="pl1b">Recomandarea zilei</li>
+              <li data-t="pl1c">Jurnal de mese și ținte de nutriție</li>
+              <li data-t="pl1d">Misiuni, serii și XP</li>
+              <li data-t="pl1e">Chat cu antrenorul echipei tale</li>
+            </ul>
+            <button type="button" class="btn" data-quiz><span data-t="pl1btn">Fă primul pas</span></button>
+          </div>
+          <div class="plan hot reveal d2">
+            <span class="badge" data-t="pl2tag">RECOMANDAT</span>
+            <h3>Premium</h3>
+            <div class="for" data-t="pl2f">Pentru sportivul care vrea totul pus la punct.</div>
+            <div class="price"><span data-t="soon_price">În curând</span><small data-t="soon_price_s">prețul apare la lansare</small></div>
+            <ul>
+              <li class="plus" data-t="plA">Tot din Standard, plus:</li>
+              <li data-t="pl2a">ASFitness Chef complet: meniuri, rețete, meal prep</li>
+              <li data-t="pl2b">Program de sală generat pentru tine</li>
+              <li data-t="pl2c">Toate rapoartele PDF</li>
+              <li data-t="pl2d">Istoric complet, încărcare și ACWR</li>
+              <li data-t="pl2e">WHOOP și „Săptămâna ta”</li>
+            </ul>
+            <a class="btn primary" href="https://instagram.com/asfitness1124" target="_blank" rel="noopener"><span data-t="notify">Anunță-mă la lansare</span></a>
+          </div>
+          <div class="plan reveal d3">
+            <h3>Ultra Premium</h3>
+            <div class="for" data-t="pl3f">Antrenorul ASF în buzunarul tău.</div>
+            <div class="price"><span data-t="soon_price2">În curând</span><small data-t="soon_price_s2">prețul apare la lansare</small></div>
+            <ul>
+              <li class="plus" data-t="plB">Tot din Premium, plus:</li>
+              <li data-t="pl3a">Antrenamente scrise de ASFitness</li>
+              <li data-t="pl3b">Meniuri personalizate ASFitness</li>
+              <li data-t="pl3c">Activare și refacere ghidate</li>
+              <li data-t="pl3d">Sesiuni live de grup incluse</li>
+              <li data-t="pl3e">Răspuns prioritar în chat</li>
+            </ul>
+            <a class="btn" href="https://instagram.com/asfitness1124" target="_blank" rel="noopener"><span data-t="notify2">Anunță-mă la lansare</span></a>
+          </div>
+          <div class="plan elite reveal d4">
+            <span class="badge" data-t="pl4tag">LOCURI LIMITATE</span>
+            <h3>Coaching 1:1</h3>
+            <div class="for" data-t="pl4f">Lucrezi direct cu mine. Totul construit pentru tine.</div>
+            <div class="price"><span data-t="pl4p">Personalizat</span><small data-t="pl4ps">după nivel, disponibilitate și ce alegi</small></div>
+            <ul>
+              <li class="plus" data-t="plC">Tot din Ultra Premium, plus:</li>
+              <li data-t="pl4a">Program făcut de la zero, doar pentru tine</li>
+              <li data-t="pl4b">2, 3, 4, 5 zile sau 7 din 7</li>
+              <li data-t="pl4c">Nutriție și schemă de suplimente, la alegere</li>
+              <li data-t="pl4d">Apeluri video și verificări săptămânale</li>
+              <li data-t="pl4e">Opțional: vin la tine, 1–3 săptămâni</li>
+            </ul>
+            <button type="button" class="btn primary" data-coach><span data-t="pl4btn">Aplică pentru Coaching 1:1</span></button>
+          </div>
+        </div>
+        <p class="plans-note reveal" data-t="pr_note">Antrenor, sală sau club? Avem planuri pentru echipe întregi. <a href="https://wa.me/40786775538" target="_blank" rel="noopener">Scrie-ne</a>.</p>
+      </div>
+    </section>
+
     <section id="intrebari" style="padding-top: 40px">
       <div class="wrap">
         <div class="kicker reveal" data-t="fq_kicker">Întrebări frecvente</div>
@@ -605,6 +695,19 @@
         <button type="button" class="qicon" id="qclose" aria-label="Închide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg></button>
       </div>
       <div id="qbody"></div>
+    </div>
+  </div>
+
+
+  <div class="quiz" id="coach" role="dialog" aria-modal="true" aria-label="Coaching 1:1">
+    <div class="aurora"><i></i><i></i></div>
+    <div class="qbox">
+      <div class="qtop">
+        <button type="button" class="qicon" id="cback" aria-label="Înapoi" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6" /></svg></button>
+        <div class="qbar"><i id="cfill"></i></div>
+        <button type="button" class="qicon" id="cclose" aria-label="Închide"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18" /></svg></button>
+      </div>
+      <div id="cbody"></div>
     </div>
   </div>
 
@@ -668,6 +771,15 @@
       sy2w: '12:00 · LUNCH', sy2: 'Eat for your day.', sy2p: 'Targets change on their own for training, match or rest days: calories, carbs, protein, water.',
       sy3w: '19:00 · EVENING', sy3: 'Cook from what you have.', sy3p: 'Tick what’s in your fridge and ASFitness Chef builds your menu and shopping list.',
       sy4w: '22:00 · BEFORE BED', sy4: 'Better than yesterday.', sy4p: 'Missions, streaks and XP. Watch yourself grow day by day, and your coach sees it all.',
+      nav_price: 'Plans',
+      pr_kicker: 'Plans', pr_t1: 'Choose how far', pr_t2: 'you want to go.', pr_lead: 'Start for free. Move up only when you feel you need it. No hidden costs.',
+      pl1f: 'For anyone who wants to start.', pl1p: 'Free', pl1a: 'Morning check-in and the ASF rings', pl1b: 'Daily recommendation', pl1c: 'Food log and nutrition targets', pl1d: 'Missions, streaks and XP', pl1e: 'Chat with your team’s coach', pl1btn: 'Take the first step',
+      pl2tag: 'RECOMMENDED', pl2f: 'For the athlete who wants everything dialled in.', soon_price: 'Coming soon', soon_price_s: 'price revealed at launch', soon_price2: 'Coming soon', soon_price_s2: 'price revealed at launch',
+      plA: 'Everything in Standard, plus:', pl2a: 'Full ASFitness Chef: menus, recipes, meal prep', pl2b: 'A gym program built for you', pl2c: 'All PDF reports', pl2d: 'Full history, load and ACWR', pl2e: 'WHOOP and “Your week”', notify: 'Notify me at launch', notify2: 'Notify me at launch',
+      pl3f: 'The ASF coach in your pocket.', plB: 'Everything in Premium, plus:', pl3a: 'Workouts written by ASFitness', pl3b: 'Personalised ASFitness menus', pl3c: 'Guided activation and recovery', pl3d: 'Group live sessions included', pl3e: 'Priority chat replies',
+      pl4tag: 'LIMITED SPOTS', pl4f: 'You work directly with me. Everything built for you.', pl4p: 'Personalised', pl4ps: 'based on level, availability and your choices',
+      plC: 'Everything in Ultra Premium, plus:', pl4a: 'A program built from scratch, just for you', pl4b: '2, 3, 4, 5 days or 7 out of 7', pl4c: 'Nutrition and a supplement plan, if you want', pl4d: 'Video calls and weekly check-ins', pl4e: 'Optional: I come to you, 1–3 weeks', pl4btn: 'Apply for 1:1 Coaching',
+      pr_note: 'Coach, gym or club? We have plans for whole teams. <a href="https://wa.me/40786775538" target="_blank" rel="noopener">Message us</a>.',
       p_hint: 'Tap the logo for another rep',
       quote: 'EVERY DAY COUNTS. DO IT NOW.', privacy: 'Privacy policy',
     };
@@ -914,6 +1026,64 @@
       window.addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
       window.addEventListener('resize', update);
       update();
+    })();
+
+
+    // ===== CANDIDATURA COACHING 1:1: 7 întrebări → rezumat → trimis pe WhatsApp (pe site nu se salvează nimic) =====
+    (() => {
+      const box = document.getElementById('coach');
+      if (!box) return;
+      const body = document.getElementById('cbody'), fill = document.getElementById('cfill'), back = document.getElementById('cback');
+      const CQ = [
+        { id: 'level', ro: 'La ce nivel ești acum?', en: 'What’s your current level?', o: [['beg', 'Încep acum', 'Just starting'], ['mid', 'Intermediar', 'Intermediate'], ['adv', 'Avansat', 'Advanced'], ['pro', 'Sportiv de performanță', 'Performance athlete']] },
+        { id: 'play', ro: 'La ce nivel joci sau concurezi?', en: 'At what level do you play or compete?', o: [['none', 'Nu concurez', 'I don’t compete'], ['amateur', 'Amator', 'Amateur'], ['junior', 'Juniori de performanță', 'Elite youth'], ['semi', 'Semi-profesionist', 'Semi-pro'], ['pro', 'Profesionist', 'Professional']] },
+        { id: 'days', ro: 'Cât de des lucrăm împreună?', en: 'How often do we work together?', o: [['2', '2 zile pe săptămână', '2 days a week'], ['3', '3 zile pe săptămână', '3 days a week'], ['4', '4 zile pe săptămână', '4 days a week'], ['5', '5 zile pe săptămână', '5 days a week'], ['7', '7 din 7', '7 out of 7']] },
+        { id: 'nutrition', ro: 'Vrei și nutriție personalizată?', en: 'Do you want personalised nutrition?', o: [['yes', 'Da, cu plan de nutriție', 'Yes, with a nutrition plan'], ['no', 'Nu, doar antrenament', 'No, training only']] },
+        { id: 'supps', ro: 'Vrei și o schemă de suplimente?', en: 'Do you want a supplement plan?', o: [['yes', 'Da', 'Yes'], ['no', 'Nu', 'No']] },
+        { id: 'onsite', ro: 'Vrei să vin la tine?', en: 'Do you want me to come to you?', note: { ro: 'Transportul, cazarea și masa sunt suportate de client, plus o sumă pentru fiecare săptămână de lucru.', en: 'Travel, accommodation and meals are covered by the client, plus a fee for each week of work.' },
+          o: [['online', 'Nu, lucrăm online', 'No, we work online'], ['1', 'Da, 1 săptămână', 'Yes, 1 week'], ['2', 'Da, 2 săptămâni', 'Yes, 2 weeks'], ['3', 'Da, 3 săptămâni', 'Yes, 3 weeks']] },
+        { id: 'call', ro: 'Cum vrei să facem cunoștință?', en: 'How do you want to get to know each other?', o: [['video', 'Apel video', 'Video call'], ['written', 'Câteva întrebări în scris', 'A few questions in writing']] },
+      ];
+      const TX = {
+        ro: { q: 'ÎNTREBAREA', of: 'DIN', title: 'CEREREA TA DE COACHING 1:1', send: 'Trimite cererea pe WhatsApp', mail: 'sau pe email', redo: 'Schimbă răspunsurile',
+          price: 'Prețul îl primești personalizat, după ce discutăm. Pe site nu salvăm nimic: cererea pleacă doar când apeși pe buton.', hello: 'Salut! Vreau să aplic pentru Coaching 1:1 ASFitness.' },
+        en: { q: 'QUESTION', of: 'OF', title: 'YOUR 1:1 COACHING REQUEST', send: 'Send the request on WhatsApp', mail: 'or by email', redo: 'Change answers',
+          price: 'You get a personalised price after we talk. Nothing is saved on this site: the request is sent only when you tap the button.', hello: 'Hi! I want to apply for ASFitness 1:1 Coaching.' },
+      };
+      let ci = 0, ca = {};
+      const lang = () => (document.documentElement.lang === 'en' ? 'en' : 'ro');
+      const label = (q, v, l) => { const o = q.o.find((x) => x[0] === v); return o ? (l === 'en' ? o[2] : o[1]) : ''; };
+      function render() {
+        const l = lang(), t = TX[l];
+        back.hidden = ci === 0;
+        if (ci >= CQ.length) return summary();
+        fill.style.width = `${(ci / CQ.length) * 100}%`;
+        const q = CQ[ci];
+        body.innerHTML = `<div class="qstep"><div class="qnum">${t.q} ${ci + 1} ${t.of} ${CQ.length}</div><h3>${q[l]}</h3>${q.note ? `<p class="qnote" style="margin:-12px 0 20px">${q.note[l]}</p>` : ''}<div class="qopts">${q.o
+          .map((o, k) => `<button type="button" class="qopt${ca[q.id] === o[0] ? ' sel' : ''}" data-v="${o[0]}"><span class="k">${String.fromCharCode(65 + k)}</span>${l === 'en' ? o[2] : o[1]}</button>`)
+          .join('')}</div></div>`;
+        body.querySelectorAll('.qopt').forEach((b) => b.addEventListener('click', () => { ca[q.id] = b.dataset.v; b.classList.add('sel'); setTimeout(() => { ci++; render(); }, 220); }));
+      }
+      function summary() {
+        const l = lang(), t = TX[l];
+        fill.style.width = '100%';
+        const rows = CQ.map((q) => [q[l], label(q, ca[q.id], l)]);
+        const text = [t.hello, '', ...rows.map(([k, v]) => `• ${k} ${v}`)].join('\n');
+        body.innerHTML = `<div class="qres"><div class="qcard"><div class="lbl">${t.title}</div>
+          <ul class="qtips" style="margin-top:16px">${rows.map(([k, v]) => `<li><span><span style="color:var(--muted)">${k}</span><br /><b style="color:#fff">${v}</b></span></li>`).join('')}</ul></div>
+          <div class="btns"><a class="btn primary big" target="_blank" rel="noopener" href="https://wa.me/40786775538?text=${encodeURIComponent(text)}">${t.send}</a>
+          <a class="btn ghost" href="mailto:asfitness1124@gmail.com?subject=${encodeURIComponent('Coaching 1:1')}&body=${encodeURIComponent(text)}">${t.mail}</a>
+          <button type="button" class="btn ghost" id="credo">${t.redo}</button></div>
+          <p class="qnote">${t.price}</p></div>`;
+        document.getElementById('credo').addEventListener('click', () => { ci = 0; render(); });
+      }
+      const open = () => { ci = 0; ca = {}; box.classList.add('open'); document.body.style.overflow = 'hidden'; render(); };
+      const close = () => { box.classList.remove('open'); document.body.style.overflow = ''; };
+      document.querySelectorAll('[data-coach]').forEach((b) => b.addEventListener('click', open));
+      document.getElementById('cclose').addEventListener('click', close);
+      back.addEventListener('click', () => { if (ci > 0) { ci--; render(); } });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && box.classList.contains('open')) close(); });
+      if (location.hash === '#coaching') open();
     })();
 
     // bara de sus capătă fundal după ce derulezi
