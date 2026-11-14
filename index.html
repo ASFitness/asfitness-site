@@ -274,7 +274,9 @@
     .plogo { position: absolute; inset: 0; border-radius: 50%; transform-style: preserve-3d;
       transform: translateY(90px) rotateX(74deg) scale(.62); filter: brightness(.25) saturate(.6); opacity: .0;
       transition: transform 1.25s cubic-bezier(.16,1.12,.3,1), filter 1.1s ease, opacity .6s ease; }
-    .plogo img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; box-shadow: 0 0 0 3px rgba(167,139,250,.55), 0 0 60px rgba(124,58,237,.65), 0 0 140px rgba(124,58,237,.35); }
+    .plogo { box-shadow: 0 0 0 3px rgba(167,139,250,.55), 0 0 60px rgba(124,58,237,.65), 0 0 140px rgba(124,58,237,.35); background: #000; }
+    .plogo img { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; opacity: 0; transition: opacity .17s linear; }
+    .plogo img.on { opacity: 1; }
     .plogo .shine { position: absolute; inset: 0; border-radius: 50%; overflow: hidden; pointer-events: none; }
     .plogo .shine::before { content: ''; position: absolute; top: -20%; bottom: -20%; width: 38%; left: -60%; transform: skewX(-18deg);
       background: linear-gradient(90deg, transparent, rgba(255,255,255,.55), rgba(221,214,254,.35), transparent); mix-blend-mode: screen; }
@@ -288,26 +290,20 @@
     .power.up .pshadow { transform: scale(1); opacity: 1; }
     .power.up .phint { opacity: 1; }
     /* 2. repetarea: se încarcă jos, apoi explodează în sus */
-    .power.rep .plogo { animation: snap 1.15s cubic-bezier(.3,0,.2,1); }
-    @keyframes snap {
-      0% { transform: none; }
-      28% { transform: translateY(16px) scale(.94); filter: brightness(.85); }
-      46% { transform: translateY(-34px) scale(1.09); filter: brightness(1.35) saturate(1.2); }
-      62% { transform: translateY(-22px) scale(1.05); filter: brightness(1.1); }
-      100% { transform: none; filter: none; }
-    }
-    .power.rep .pshadow { animation: shadow 1.15s cubic-bezier(.3,0,.2,1); }
-    @keyframes shadow { 28% { transform: scale(1.12); opacity: 1; } 46% { transform: scale(.7); opacity: .5; } 100% { transform: scale(1); opacity: 1; } }
-    .power.rep .shine::before { animation: sweep 1.15s ease .38s; }
+    .power.peak .plogo { animation: bump .6s cubic-bezier(.2,1.4,.3,1); }
+    @keyframes bump { 35% { transform: scale(1.045); filter: brightness(1.25); } 100% { transform: none; filter: none; } }
+    .power.peak .pshadow { animation: shadow .8s ease; }
+    @keyframes shadow { 35% { transform: scale(1.15); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
+    .power.peak .shine::before { animation: sweep .9s ease; }
     @keyframes sweep { from { left: -60%; } to { left: 130%; } }
-    .power.rep .pring { animation: ring 1.1s cubic-bezier(.1,.7,.3,1) .45s; }
-    .power.rep .pring.r2 { animation-delay: .6s; }
+    .power.peak .pring { animation: ring 1.1s cubic-bezier(.1,.7,.3,1); }
+    .power.peak .pring.r2 { animation-delay: .15s; }
     @keyframes ring { 0% { opacity: .9; transform: scale(1); } 100% { opacity: 0; transform: scale(1.75); border-width: 1px; } }
-    .power.rep .pspark { animation: spark 1s cubic-bezier(.1,.8,.3,1) .45s; }
+    .power.peak .pspark { animation: spark 1s cubic-bezier(.1,.8,.3,1); }
     @keyframes spark { 0% { opacity: 1; transform: translate(0, 0) scale(1); } 100% { opacity: 0; transform: translate(var(--x), var(--y)) scale(.3); } }
     .power.slam .ptext { animation: slam .7s cubic-bezier(.2,1.3,.3,1) forwards; }
     @keyframes slam { 0% { opacity: 0; transform: scale(1.6); filter: blur(12px); } 60% { opacity: 1; transform: scale(.96); filter: blur(0); } 100% { opacity: 1; transform: none; filter: none; } }
-    .power.slam .pstage { animation: shake .35s ease .5s; }
+    .power.slam .pstage { animation: shake .35s ease; }
     @keyframes shake { 25% { transform: translateX(-4px); } 50% { transform: translateX(4px); } 75% { transform: translateX(-2px); } }
 
     /* apariție la derulare */
@@ -373,7 +369,7 @@
         <div class="pstage" id="pstage" role="button" tabindex="0" aria-label="Încă o repetare">
           <div class="pshadow"></div>
           <div class="pring"></div><div class="pring r2"></div>
-          <div class="plogo"><img src="img/logo-900.jpg" alt="ASFitness" /><div class="shine"></div></div>
+          <div class="plogo"><img class="on" src="img/rep/f1.jpg" alt="ASFitness" /><img src="img/rep/f2.jpg" alt="" /><img src="img/rep/f3.jpg" alt="" /><img src="img/rep/f4.jpg" alt="" /><div class="shine"></div></div>
         </div>
         <div class="ptext chrome">DO IT NOW.</div>
         <div class="phint" data-t="p_hint">Apasă pe logo pentru încă o repetare</div>
@@ -786,23 +782,41 @@
       }
       const calmMode = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
       let busy = false, first = true;
+      const imgs = [...sec.querySelectorAll('.plogo img')];
+      const show = (k) => imgs.forEach((im, j) => im.classList.toggle('on', j === k));
+      // cadrele repetării (din GIF-ul ASFitness): urcă, ține sus, coboară, revine exact în logo
+      const SEQ = [[1, 230], [2, 230], [3, 260], [3, 700], [2, 300], [1, 300], [0, 0]];
       const rep = () => {
         if (busy) return;
         busy = true;
-        sec.classList.remove('rep'); void sec.offsetWidth; // repornește animația
-        sec.classList.add('rep');
-        if (first) { setTimeout(() => sec.classList.add('slam'), 450); first = false; }
-        setTimeout(() => { sec.classList.remove('rep'); busy = false; }, 1250);
+        let t = 0;
+        SEQ.forEach(([k, d], n) => {
+          setTimeout(() => {
+            show(k);
+            if (n === 2) { // a ajuns sus: lumină, val, scântei
+              sec.classList.remove('peak'); void sec.offsetWidth; sec.classList.add('peak');
+              if (first) { sec.classList.add('slam'); first = false; }
+            }
+          }, t);
+          t += d;
+        });
+        setTimeout(() => { sec.classList.remove('peak'); busy = false; }, t + 900);
       };
       const go = () => {
         sec.classList.add('up');
         if (calmMode) { sec.classList.add('slam'); return; }
         setTimeout(rep, 1300);
       };
+      // la prima vedere: se ridică și face o repetare; cât timp rămâi pe ea, încă o repetare la ~6 secunde
+      let seen = false, visible = false;
       if ('IntersectionObserver' in window) {
-        const o = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { go(); o.disconnect(); } }), { threshold: 0.35 });
+        const o = new IntersectionObserver((es) => es.forEach((e) => {
+          visible = e.isIntersecting;
+          if (visible && !seen) { seen = true; go(); }
+        }), { threshold: 0.35 });
         o.observe(sec);
       } else go();
+      if (!calmMode) setInterval(() => { if (visible && seen && !document.hidden) rep(); }, 6500);
       setTimeout(() => { if (!sec.classList.contains('up')) { sec.classList.add('up', 'slam'); } }, 9000); // siguranță
       stage.addEventListener('click', rep);
       stage.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); rep(); } });
