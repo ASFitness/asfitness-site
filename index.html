@@ -483,6 +483,9 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' }) : null;
     document.querySelectorAll('.reveal').forEach((el) => (io ? io.observe(el) : el.classList.add('in')));
+    // siguranță: ce e deja pe ecran apare imediat; dacă browserul nu anunță derularea, după 4 s apare tot
+    requestAnimationFrame(() => document.querySelectorAll('.reveal').forEach((el) => { if (el.getBoundingClientRect().top < innerHeight) el.classList.add('in'); }));
+    setTimeout(() => { if (!document.querySelector('.reveal.in')) document.querySelectorAll('.reveal').forEach((el) => el.classList.add('in')); }, 4000);
 
     // lumina care urmărește mouse-ul pe carduri
     document.querySelectorAll('.card').forEach((c) => c.addEventListener('pointermove', (e) => {
