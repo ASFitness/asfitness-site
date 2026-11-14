@@ -362,6 +362,15 @@
     .plan .btn { justify-content: center; width: 100%; }
     .plans-note { color: var(--muted); font-size: 14px; margin-top: 18px; }
 
+
+    .b2b { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; margin-top: 26px; }
+    @media (max-width: 900px) { .b2b { grid-template-columns: 1fr; } }
+    .b2b-card { padding: 26px 24px; border-radius: 24px; background: var(--card); border: 1px solid var(--border); }
+    .b2b-card h3 { font-family: 'Exo 2', sans-serif; font-style: italic; font-weight: 900; font-size: clamp(24px, 3vw, 32px); margin: 0 0 14px; }
+    .b2b-card ul { list-style: none; padding: 0; margin: 0 0 22px; display: grid; gap: 10px; }
+    .b2b-card li { display: flex; gap: 10px; color: #D8D3E8; font-size: 15px; line-height: 1.45; }
+    .b2b-card li::before { content: ''; flex-shrink: 0; width: 7px; height: 7px; margin-top: 8px; border-radius: 50%; background: var(--violet-l); box-shadow: 0 0 10px rgba(167,139,250,.8); }
+
     /* apariție la derulare */
     .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s cubic-bezier(.2,.7,.2,1), transform .8s cubic-bezier(.2,.7,.2,1); }
     .js .reveal.in { opacity: 1; transform: none; }
@@ -625,10 +634,11 @@
           <div class="plan elite reveal d4">
             <span class="badge" data-t="pl4tag">LOCURI LIMITATE</span>
             <h3>Coaching 1:1</h3>
-            <div class="for" data-t="pl4f">Lucrezi direct cu mine. Totul construit pentru tine.</div>
+            <div class="for" data-t="pl4f">Lucrezi direct cu un antrenor acreditat ASFitness. Totul construit pentru tine.</div>
             <div class="price"><span data-t="pl4p">Personalizat</span><small data-t="pl4ps">după nivel, disponibilitate și ce alegi</small></div>
             <ul>
               <li class="plus" data-t="plC">Tot din Ultra Premium, plus:</li>
+              <li data-t="pl4z">Antrenor acreditat ASFitness, dedicat ție</li>
               <li data-t="pl4a">Program făcut de la zero, doar pentru tine</li>
               <li data-t="pl4b">2, 3, 4, 5 zile sau 7 din 7</li>
               <li data-t="pl4c">Nutriție și schemă de suplimente, la alegere</li>
@@ -638,7 +648,29 @@
             <button type="button" class="btn primary" data-coach><span data-t="pl4btn">Aplică pentru Coaching 1:1</span></button>
           </div>
         </div>
-        <p class="plans-note reveal" data-t="pr_note">Antrenor, sală sau club? Avem planuri pentru echipe întregi. <a href="https://wa.me/40786775538" target="_blank" rel="noopener">Scrie-ne</a>.</p>
+        <div class="b2b">
+          <div class="b2b-card reveal d1">
+            <div class="kicker" data-t="b2b1k">Ești antrenor?</div>
+            <h3 data-t="b2b1h">Lucrezi cu imaginea ta, în aplicația ASFitness.</h3>
+            <ul>
+              <li data-t="b2b1a">Numele tău, programele tale, antrenamentele tale.</li>
+              <li data-t="b2b1b">Plătești un abonament lunar de antrenor, pe niveluri, după câți clienți ai.</li>
+              <li data-t="b2b1c">Clienții tăi își plătesc singuri abonamentul în aplicație.</li>
+              <li data-t="b2b1d">Cu cât se înscriu mai mulți cu codul tău, cu atât abonamentul tău scade, iar la nivelurile mari primești coduri de reducere pentru clienții tăi.</li>
+            </ul>
+            <a class="btn primary" href="https://wa.me/40786775538?text=Salut%21%20Sunt%20antrenor%20%C8%99i%20vreau%20s%C4%83%20lucrez%20cu%20aplica%C8%9Bia%20ASFitness." data-wa-coach target="_blank" rel="noopener"><span data-t="b2b1btn">Vreau să devin partener</span></a>
+          </div>
+          <div class="b2b-card reveal d2">
+            <div class="kicker" data-t="b2b2k">Ai o sală sau un club?</div>
+            <h3 data-t="b2b2h">Parteneriat ASFitness.</h3>
+            <ul>
+              <li data-t="b2b2a">Clienți noi pentru sala ta, prin aplicație.</li>
+              <li data-t="b2b2b">Aplicația poate face parte din abonamentul sălii.</li>
+              <li data-t="b2b2c">Toți sportivii și antrenorii tăi, pe un singur ecran.</li>
+            </ul>
+            <a class="btn" href="https://wa.me/40786775538?text=Salut%21%20Am%20o%20sal%C4%83%20/%20un%20club%20%C8%99i%20vreau%20un%20parteneriat%20ASFitness." data-wa-gym target="_blank" rel="noopener"><span data-t="b2b2btn">Hai să vorbim</span></a>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -777,9 +809,13 @@
       pl2tag: 'RECOMMENDED', pl2f: 'For the athlete who wants everything dialled in.', soon_price: 'Coming soon', soon_price_s: 'price revealed at launch', soon_price2: 'Coming soon', soon_price_s2: 'price revealed at launch',
       plA: 'Everything in Standard, plus:', pl2a: 'Full ASFitness Chef: menus, recipes, meal prep', pl2b: 'A gym program built for you', pl2c: 'All PDF reports', pl2d: 'Full history, load and ACWR', pl2e: 'WHOOP and “Your week”', notify: 'Notify me at launch', notify2: 'Notify me at launch',
       pl3f: 'The ASF coach in your pocket.', plB: 'Everything in Premium, plus:', pl3a: 'Workouts written by ASFitness', pl3b: 'Personalised ASFitness menus', pl3c: 'Guided activation and recovery', pl3d: 'Group live sessions included', pl3e: 'Priority chat replies',
-      pl4tag: 'LIMITED SPOTS', pl4f: 'You work directly with me. Everything built for you.', pl4p: 'Personalised', pl4ps: 'based on level, availability and your choices',
+      pl4tag: 'LIMITED SPOTS', pl4f: 'You work directly with an ASFitness-accredited coach. Everything built for you.', pl4z: 'An ASFitness-accredited coach, dedicated to you', pl4p: 'Personalised', pl4ps: 'based on level, availability and your choices',
       plC: 'Everything in Ultra Premium, plus:', pl4a: 'A program built from scratch, just for you', pl4b: '2, 3, 4, 5 days or 7 out of 7', pl4c: 'Nutrition and a supplement plan, if you want', pl4d: 'Video calls and weekly check-ins', pl4e: 'Optional: I come to you, 1–3 weeks', pl4btn: 'Apply for 1:1 Coaching',
-      pr_note: 'Coach, gym or club? We have plans for whole teams. <a href="https://wa.me/40786775538" target="_blank" rel="noopener">Message us</a>.',
+      b2b1k: 'Are you a coach?', b2b1h: 'Work under your own brand, inside the ASFitness app.',
+      b2b1a: 'Your name, your programs, your workouts.', b2b1b: 'You pay a monthly coach subscription, in levels based on how many clients you have.',
+      b2b1c: 'Your clients pay for their own subscription in the app.', b2b1d: 'The more people join with your code, the lower your subscription, and at higher levels you get discount codes for your clients.',
+      b2b1btn: 'I want to become a partner',
+      b2b2k: 'Do you run a gym or club?', b2b2h: 'ASFitness partnership.', b2b2a: 'New clients for your gym, through the app.', b2b2b: 'The app can be part of your gym membership.', b2b2c: 'All your athletes and coaches on one screen.', b2b2btn: 'Let’s talk',
       p_hint: 'Tap the logo for another rep',
       quote: 'EVERY DAY COUNTS. DO IT NOW.', privacy: 'Privacy policy',
     };
@@ -1046,9 +1082,9 @@
       ];
       const TX = {
         ro: { q: 'ÎNTREBAREA', of: 'DIN', title: 'CEREREA TA DE COACHING 1:1', send: 'Trimite cererea pe WhatsApp', mail: 'sau pe email', redo: 'Schimbă răspunsurile',
-          price: 'Prețul îl primești personalizat, după ce discutăm. Pe site nu salvăm nimic: cererea pleacă doar când apeși pe buton.', hello: 'Salut! Vreau să aplic pentru Coaching 1:1 ASFitness.' },
+          price: 'Cererea ajunge la un antrenor acreditat ASFitness. Prețul îl primești personalizat, după ce discutăm. Pe site nu salvăm nimic: cererea pleacă doar când apeși pe buton.', hello: 'Salut! Vreau să aplic pentru Coaching 1:1 ASFitness.' },
         en: { q: 'QUESTION', of: 'OF', title: 'YOUR 1:1 COACHING REQUEST', send: 'Send the request on WhatsApp', mail: 'or by email', redo: 'Change answers',
-          price: 'You get a personalised price after we talk. Nothing is saved on this site: the request is sent only when you tap the button.', hello: 'Hi! I want to apply for ASFitness 1:1 Coaching.' },
+          price: 'Your request goes to an ASFitness-accredited coach. You get a personalised price after we talk. Nothing is saved on this site: the request is sent only when you tap the button.', hello: 'Hi! I want to apply for ASFitness 1:1 Coaching.' },
       };
       let ci = 0, ca = {};
       const lang = () => (document.documentElement.lang === 'en' ? 'en' : 'ro');
