@@ -78,10 +78,12 @@
     .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; overflow: hidden; }
     .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr .9fr; gap: 50px; align-items: center; }
     .hero h1 { font-family: 'Exo 2', sans-serif; font-size: clamp(50px, 8.4vw, 108px); font-style: italic; font-weight: 900; letter-spacing: .5px; line-height: .98; }
-    .rot { display: inline-grid; vertical-align: bottom; overflow: hidden; height: 1.08em; padding-right: .08em; }
-    .rot span { grid-area: 1 / 1; white-space: nowrap; transform: translateY(105%); opacity: 0; transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .7s; }
-    .rot span.on { transform: none; opacity: 1; }
-    .rot span.out { transform: translateY(-105%); opacity: 0; }
+    .rot { display: inline-grid; vertical-align: bottom; padding-right: .1em; }
+    .rot .w { grid-area: 1 / 1; white-space: nowrap; }
+    .rot .c { display: inline-block; opacity: 0; filter: blur(14px); transform: translateY(.32em) scale(.96); text-shadow: 0 0 28px rgba(139,92,246,.55);
+      transition: opacity .55s ease, filter .7s cubic-bezier(.2,.8,.2,1), transform .8s cubic-bezier(.2,.8,.2,1); transition-delay: calc(var(--i) * 45ms); }
+    .rot .w.on .c { opacity: 1; filter: blur(0); transform: none; transition-delay: calc(220ms + var(--i) * 45ms); }
+    .rot .w.out .c { opacity: 0; filter: blur(10px); transform: translateY(-.22em) scale(1.02); transition-duration: .4s, .45s, .5s; transition-delay: calc(var(--i) * 25ms); }
     .sig { display: inline-flex; align-items: baseline; gap: 14px; margin-top: 22px; font-family: 'Exo 2', sans-serif; font-style: italic; font-weight: 900; font-size: clamp(30px, 4.2vw, 46px); letter-spacing: .5px; }
     .sig .vs { font-size: .6em; color: var(--violet-l); }
     .sig .me2 { color: #8A84A0; font-size: .82em; }
@@ -107,12 +109,6 @@
     .c3 { bottom: 60px; left: 0; animation-delay: -5s; }
     @media (max-width: 520px) { .stage { height: 540px; } .device { width: 236px; } .c1 { left: 0; top: 40px; } .c2 { right: 0; } .c3 { left: 4px; bottom: 30px; } }
 
-    /* banda care curge */
-    .marquee { border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: linear-gradient(90deg, rgba(76,29,149,.25), rgba(124,58,237,.18), rgba(76,29,149,.25)); overflow: hidden; padding: 18px 0; }
-    .track { display: flex; gap: 48px; width: max-content; animation: marquee 32s linear infinite; }
-    .track span { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 30px; letter-spacing: 2px; white-space: nowrap; display: inline-flex; align-items: center; gap: 48px; }
-    .track span::after { content: '✦'; color: var(--violet-l); font-style: normal; font-size: 20px; }
-    @keyframes marquee { to { transform: translateX(-50%); } }
 
     /* cifre */
     .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 50px; }
@@ -306,7 +302,7 @@
       <div class="wrap">
         <div>
           <div class="pill reveal"><b data-t="hero_new">NOU</b><span data-t="hero_pill">Săptămâna ta: progresul tău, gata de Instagram</span></div>
-          <h1 class="reveal d1" aria-label="Mai puternic, mai rapid, mai rezistent, mai disciplinat, mai bun decât ieri."><span data-t="hero_t1">MAI</span> <span class="rot grad-text" id="rot"></span><br /><span data-t="hero_t2">DECÂT IERI.</span></h1>
+          <h1 class="reveal d1" aria-label="Mai puternic, mai rapid, mai rezistent, mai disciplinat, mai bun decât ieri."><span data-t="hero_t1">MAI</span> <span class="rot" id="rot"></span><br /><span data-t="hero_t2">DECÂT IERI.</span></h1>
           <div class="sig reveal d2"><span class="chrome">ME</span><span class="vs">vs</span><span class="me2">me.</span></div>
           <p class="lead reveal d2" data-t="hero_lead">Antrenament, recuperare, nutriție și mindset într-o singură aplicație. Pentru sportivi, oameni activi și antrenorii lor.</p>
           <div class="btns reveal d3">
@@ -327,12 +323,6 @@
       </div>
     </section>
 
-    <div class="marquee" aria-hidden="true">
-      <div class="track">
-        <span>MINDSET</span><span>STRENGTH</span><span>CONDITIONING</span><span>NUTRITION &amp; RECOVERY</span><span>DO IT NOW</span><span>ME vs me</span>
-        <span>MINDSET</span><span>STRENGTH</span><span>CONDITIONING</span><span>NUTRITION &amp; RECOVERY</span><span>DO IT NOW</span><span>ME vs me</span>
-      </div>
-    </div>
 
     <section id="pentru-cine">
       <div class="wrap">
@@ -580,17 +570,22 @@
       if (!el) return;
       clearInterval(rotTimer);
       const words = WORDS[l] || WORDS.ro;
-      el.innerHTML = words.map((w, i) => `<span class="${i === 0 ? 'on' : ''}">${w}</span>`).join('');
+      // fiecare literă are culoarea ei, din violet spre lavandă (degrade pe cuvânt) și apare cu o mică întârziere
+      const A = [139, 92, 246], B = [221, 214, 254];
+      const col = (k, n) => { const t = n > 1 ? k / (n - 1) : 0; return `rgb(${A.map((a, j) => Math.round(a + (B[j] - a) * t)).join(',')})`; };
+      el.innerHTML = words
+        .map((w, i) => `<span class="w${i === 0 ? ' on' : ''}" aria-hidden="${i !== 0}">${[...w].map((ch, k) => `<span class="c" style="--i:${k};color:${col(k, w.length)}">${ch}</span>`).join('')}</span>`)
+        .join('');
       const spans = [...el.children];
       let i = 0;
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
       rotTimer = setInterval(() => {
         const prev = spans[i];
         prev.classList.remove('on'); prev.classList.add('out');
-        setTimeout(() => prev.classList.remove('out'), 750);
+        setTimeout(() => prev.classList.remove('out'), 900);
         i = (i + 1) % spans.length;
-        spans[i].classList.add('on');
-      }, 2200);
+        spans[i].classList.add('on'); // noul cuvânt pornește puțin după (întârzierea e în CSS)
+      }, 2800);
     }
     function setLang(l) {
       const d = l === 'en' ? EN : RO;
