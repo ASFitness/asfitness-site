@@ -4,18 +4,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ASFitness Performance · 1% mai bun în fiecare zi</title>
+  <title>ASFitness Performance · Mai bun decât ieri</title>
   <meta name="description" content="ASFitness Performance: aplicația pentru sportivi și antrenori. Pregătire zilnică, antrenament, recuperare, nutriție și mindset într-un singur loc." />
   <meta name="theme-color" content="#07060B" />
   <meta property="og:title" content="ASFitness Performance" />
-  <meta property="og:description" content="Antrenament, recuperare, nutriție și mindset într-o singură aplicație. 1% mai bun în fiecare zi." />
+  <meta property="og:description" content="Antrenament, recuperare, nutriție și mindset într-o singură aplicație. Mai bun decât ieri." />
   <meta property="og:image" content="https://asfitness.ro/img/hero-logo.jpg" />
   <meta property="og:url" content="https://asfitness.ro/" />
   <link rel="icon" href="img/icon-512.png" />
   <link rel="apple-touch-icon" href="img/icon-512.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800;1,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,800;1,900&family=Exo+2:ital,wght@1,800;1,900&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
   <style>
     :root {
       --bg: #07060B; --bg2: #0D0B14; --card: rgba(22, 20, 32, .72); --card-solid: #15131F; --border: rgba(255,255,255,.08);
@@ -51,10 +51,13 @@
     /* bara de sus */
     header { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background .3s, border-color .3s; border-bottom: 1px solid transparent; }
     header.scrolled { background: rgba(7, 6, 11, .78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-color: var(--border); }
-    .nav { display: flex; align-items: center; gap: 20px; height: 70px; }
+    .nav { display: flex; align-items: center; gap: 20px; height: 80px; }
     .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-right: auto; }
-    .brand img { width: 38px; height: 38px; border-radius: 50%; box-shadow: 0 0 0 2px rgba(167,139,250,.5), 0 0 22px rgba(124,58,237,.6); }
-    .brand b { font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 25px; letter-spacing: 2px; }
+    .brand img { width: 52px; height: 52px; border-radius: 50%; box-shadow: 0 0 0 2px rgba(167,139,250,.6), 0 0 28px rgba(124,58,237,.75); }
+    .brand b { display: block; font-family: 'Exo 2', sans-serif; font-style: italic; font-weight: 900; font-size: 27px; letter-spacing: 1.5px; line-height: 1; }
+    .brand small { display: block; font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-weight: 900; font-size: 11px; letter-spacing: 6px; color: var(--violet-l); margin-top: 3px; }
+    /* scris metalic, ca pe logo: argintiu cu o tentă de mov */
+    .chrome { background: linear-gradient(180deg, #FFFFFF 0%, #E9E5F5 38%, #9C95B2 50%, #F5F3FF 62%, #C4B5FD 100%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 2px 0 rgba(76,29,149,.9)) drop-shadow(0 0 14px rgba(124,58,237,.45)); }
     .links { display: flex; gap: 26px; }
     .links a { text-decoration: none; color: var(--muted); font-weight: 500; font-size: 15px; transition: color .2s; }
     .links a:hover { color: var(--text); }
@@ -74,7 +77,15 @@
     /* ecranul mare */
     .hero { min-height: 100vh; display: flex; align-items: center; padding: 120px 0 80px; overflow: hidden; }
     .hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr .9fr; gap: 50px; align-items: center; }
-    .hero h1 { font-size: clamp(56px, 9vw, 116px); font-style: italic; font-weight: 900; letter-spacing: 1px; line-height: .95; }
+    .hero h1 { font-family: 'Exo 2', sans-serif; font-size: clamp(50px, 8.4vw, 108px); font-style: italic; font-weight: 900; letter-spacing: .5px; line-height: .98; }
+    .rot { display: inline-grid; vertical-align: bottom; overflow: hidden; height: 1.08em; padding-right: .08em; }
+    .rot span { grid-area: 1 / 1; white-space: nowrap; transform: translateY(105%); opacity: 0; transition: transform .7s cubic-bezier(.2,.8,.2,1), opacity .7s; }
+    .rot span.on { transform: none; opacity: 1; }
+    .rot span.out { transform: translateY(-105%); opacity: 0; }
+    .sig { display: inline-flex; align-items: baseline; gap: 14px; margin-top: 22px; font-family: 'Exo 2', sans-serif; font-style: italic; font-weight: 900; font-size: clamp(30px, 4.2vw, 46px); letter-spacing: .5px; }
+    .sig .vs { font-size: .6em; color: var(--violet-l); }
+    .sig .me2 { color: #8A84A0; font-size: .82em; }
+    .sig::before { content: ''; width: 46px; height: 3px; background: var(--grad); border-radius: 3px; align-self: center; }
     .pill { display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px 7px 8px; border-radius: 999px; background: rgba(255,255,255,.05); border: 1px solid var(--border); font-size: 14px; color: var(--muted); margin-bottom: 22px; }
     .pill b { background: var(--grad-btn); color: #fff; border-radius: 999px; padding: 3px 10px; font-size: 12px; letter-spacing: .5px; }
     @media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; } .stage { order: 2; } }
@@ -230,7 +241,7 @@
   <div class="progress" id="prog"></div>
   <header id="hdr">
     <div class="wrap nav">
-      <a class="brand" href="#top"><img src="img/icon-512.png" alt="" /><b>ASFITNESS</b></a>
+      <a class="brand" href="#top"><img src="img/icon-512.png" alt="" /><span><b class="chrome">ASFITNESS</b><small>DO IT NOW</small></span></a>
       <nav class="links">
         <a href="#aplicatia" data-t="nav_app">Aplicația</a>
         <a href="#pentru-cine" data-t="nav_who">Pentru cine</a>
@@ -252,7 +263,8 @@
       <div class="wrap">
         <div>
           <div class="pill reveal"><b data-t="hero_new">NOU</b><span data-t="hero_pill">Săptămâna ta: progresul tău, gata de Instagram</span></div>
-          <h1 class="reveal d1"><span data-t="hero_t1">1% MAI BUN.</span><br /><span class="grad-text" data-t="hero_t2">ÎN FIECARE ZI.</span></h1>
+          <h1 class="reveal d1" aria-label="Mai puternic, mai rapid, mai rezistent, mai disciplinat, mai bun decât ieri."><span data-t="hero_t1">MAI</span> <span class="rot grad-text" id="rot"></span><br /><span data-t="hero_t2">DECÂT IERI.</span></h1>
+          <div class="sig reveal d2"><span class="chrome">ME</span><span class="vs">vs</span><span class="me2">me.</span></div>
           <p class="lead reveal d2" data-t="hero_lead">Antrenament, recuperare, nutriție și mindset într-o singură aplicație. Pentru sportivi, oameni activi și antrenorii lor.</p>
           <div class="btns reveal d3">
             <a class="btn primary" href="https://asfitness-app.expo.app" target="_blank" rel="noopener">
@@ -276,8 +288,8 @@
 
     <div class="marquee" aria-hidden="true">
       <div class="track">
-        <span>MINDSET</span><span>STRENGTH</span><span>CONDITIONING</span><span>NUTRITION &amp; RECOVERY</span><span>DO IT NOW</span><span>1% BETTER</span>
-        <span>MINDSET</span><span>STRENGTH</span><span>CONDITIONING</span><span>NUTRITION &amp; RECOVERY</span><span>DO IT NOW</span><span>1% BETTER</span>
+        <span>MINDSET</span><span>STRENGTH</span><span>CONDITIONING</span><span>NUTRITION &amp; RECOVERY</span><span>DO IT NOW</span><span>ME vs me</span>
+        <span>MINDSET</span><span>STRENGTH</span><span>CONDITIONING</span><span>NUTRITION &amp; RECOVERY</span><span>DO IT NOW</span><span>ME vs me</span>
       </div>
     </div>
 
@@ -455,7 +467,7 @@
     // RO / EN: textele românești sunt în pagină; aici sunt cele în engleză. Limba aleasă se ține minte.
     const EN = {
       nav_app: 'The app', nav_who: 'Who it’s for', nav_coaches: 'Coaches & clubs', nav_faq: 'FAQ', nav_contact: 'Contact',
-      hero_new: 'NEW', hero_pill: 'Your week: your progress, ready for Instagram', hero_t1: '1% BETTER.', hero_t2: 'EVERY DAY.',
+      hero_new: 'NEW', hero_pill: 'Your week: your progress, ready for Instagram', hero_t1: '', hero_t2: 'THAN YESTERDAY.',
       hero_lead: 'Training, recovery, nutrition and mindset in one app. For athletes, active people and their coaches.',
       cta_app: 'Open the app', cta_coach: 'Work with ASFitness',
       ch1: 'Readiness 86%', ch1s: 'You’re ready today', ch2: 'New record', ch2s: 'Bench press · 85 kg', ch3: 'Your week: 4/4', ch3s: 'Well done, Andrei!',
@@ -504,12 +516,34 @@
     };
     const RO = {};
     document.querySelectorAll('[data-t]').forEach((el) => (RO[el.dataset.t] = el.innerHTML));
-    const TITLES = { ro: document.title, en: 'ASFitness Performance · 1% better every day' };
+    const TITLES = { ro: document.title, en: 'ASFitness Performance · Better than yesterday' };
+
+    // titlul mare: cuvântul mov se schimbă singur (RO / EN)
+    const WORDS = { ro: ['PUTERNIC', 'RAPID', 'REZISTENT', 'DISCIPLINAT', 'BUN'], en: ['STRONGER', 'FASTER', 'TOUGHER', 'SHARPER', 'BETTER'] };
+    let rotTimer = null;
+    function startRot(l) {
+      const el = document.getElementById('rot');
+      if (!el) return;
+      clearInterval(rotTimer);
+      const words = WORDS[l] || WORDS.ro;
+      el.innerHTML = words.map((w, i) => `<span class="${i === 0 ? 'on' : ''}">${w}</span>`).join('');
+      const spans = [...el.children];
+      let i = 0;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      rotTimer = setInterval(() => {
+        const prev = spans[i];
+        prev.classList.remove('on'); prev.classList.add('out');
+        setTimeout(() => prev.classList.remove('out'), 750);
+        i = (i + 1) % spans.length;
+        spans[i].classList.add('on');
+      }, 2200);
+    }
     function setLang(l) {
       const d = l === 'en' ? EN : RO;
       document.querySelectorAll('[data-t]').forEach((el) => { if (d[el.dataset.t] != null) el.innerHTML = d[el.dataset.t]; });
       document.documentElement.lang = l;
       document.title = TITLES[l];
+      startRot(l);
       document.querySelectorAll('.lang button').forEach((b) => b.classList.toggle('on', b.dataset.lang === l));
       try { localStorage.setItem('asf.lang', l); } catch (e) {}
     }
@@ -519,7 +553,7 @@
       const q = new URLSearchParams(location.search).get('lang');
       start = q || localStorage.getItem('asf.lang') || ((navigator.language || 'ro').toLowerCase().startsWith('ro') ? 'ro' : 'en');
     } catch (e) {}
-    if (start === 'en') setLang('en');
+    if (start === 'en') setLang('en'); else startRot('ro');
 
     // bara de sus capătă fundal după ce derulezi
     const hdr = document.getElementById('hdr');
