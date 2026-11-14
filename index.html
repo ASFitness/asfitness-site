@@ -17,6 +17,8 @@
   <meta name="twitter:card" content="summary_large_image" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"ASFitness Performance","url":"https://asfitness.ro","logo":"https://asfitness.ro/img/icon-512.png","email":"contact@asfitness.ro","sameAs":["https://instagram.com/asfitness1124"]}</script>
   <link rel="icon" href="img/icon-512.png" />
+  <!-- statistici anonime, fără cookie-uri (Umami); se numără doar pe asfitness.ro, nu și la teste locale -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="96fd8a49-ad70-41f5-98e1-012f7d01f280" data-domains="asfitness.ro,www.asfitness.ro"></script>
   <link rel="apple-touch-icon" href="img/icon-512.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -421,7 +423,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6" /></svg>
               <span><span data-t="cta_step">Fă primul pas</span> <small class="mins" data-t="cta_min">· 1 minut</small></span>
             </button>
-            <a class="btn ghost" href="https://asfitness-app.expo.app" target="_blank" rel="noopener"><span data-t="cta_have">Am deja cont</span></a>
+            <a class="btn ghost" href="https://asfitness-app.expo.app" target="_blank" rel="noopener" data-umami-event="have_account"><span data-t="cta_have">Am deja cont</span></a>
           </div>
         </div>
         <div class="stage reveal d2">
@@ -620,7 +622,7 @@
               <li data-t="pl2d">Istoric complet, încărcare și ACWR</li>
               <li data-t="pl2e">WHOOP și „Săptămâna ta”</li>
             </ul>
-            <a class="btn primary" href="https://instagram.com/asfitness1124" target="_blank" rel="noopener"><span data-t="notify">Anunță-mă la lansare</span></a>
+            <a class="btn primary" href="https://instagram.com/asfitness1124" target="_blank" rel="noopener" data-umami-event="notify_premium"><span data-t="notify">Anunță-mă la lansare</span></a>
           </div>
           <div class="plan reveal d3">
             <h3>Ultra Premium</h3>
@@ -634,7 +636,7 @@
               <li data-t="pl3d">Sesiuni live de grup incluse</li>
               <li data-t="pl3e">Răspuns prioritar în chat</li>
             </ul>
-            <a class="btn" href="https://instagram.com/asfitness1124" target="_blank" rel="noopener"><span data-t="notify2">Anunță-mă la lansare</span></a>
+            <a class="btn" href="https://instagram.com/asfitness1124" target="_blank" rel="noopener" data-umami-event="notify_ultra"><span data-t="notify2">Anunță-mă la lansare</span></a>
           </div>
           <div class="plan elite reveal d4">
             <span class="badge" data-t="pl4tag">LOCURI LIMITATE</span>
@@ -665,7 +667,7 @@
               <li data-t="b2b1e">Doar antrenori acreditați: certificate de specialitate, firmă sau PFA și actele necesare pentru lucrul cu minori.</li>
               <li data-t="b2b1d">Cu cât se înscriu mai mulți cu codul tău, cu atât abonamentul tău scade, iar la nivelurile mari primești coduri de reducere pentru clienții tăi.</li>
             </ul>
-            <a class="btn primary" href="https://wa.me/40786775538?text=Salut%21%20Sunt%20antrenor%20%C8%99i%20vreau%20s%C4%83%20lucrez%20cu%20aplica%C8%9Bia%20ASFitness." data-wa-coach target="_blank" rel="noopener"><span data-t="b2b1btn">Vreau să devin partener</span></a>
+            <a class="btn primary" href="https://wa.me/40786775538?text=Salut%21%20Sunt%20antrenor%20%C8%99i%20vreau%20s%C4%83%20lucrez%20cu%20aplica%C8%9Bia%20ASFitness." data-wa-coach data-umami-event="partner_coach" target="_blank" rel="noopener"><span data-t="b2b1btn">Vreau să devin partener</span></a>
           </div>
           <div class="b2b-card reveal d2">
             <div class="kicker" data-t="b2b2k">Ai o sală sau un club?</div>
@@ -675,7 +677,7 @@
               <li data-t="b2b2b">Aplicația poate face parte din abonamentul sălii.</li>
               <li data-t="b2b2c">Toți sportivii și antrenorii tăi, pe un singur ecran.</li>
             </ul>
-            <a class="btn" href="https://wa.me/40786775538?text=Salut%21%20Am%20o%20sal%C4%83%20/%20un%20club%20%C8%99i%20vreau%20un%20parteneriat%20ASFitness." data-wa-gym target="_blank" rel="noopener"><span data-t="b2b2btn">Hai să vorbim</span></a>
+            <a class="btn" href="https://wa.me/40786775538?text=Salut%21%20Am%20o%20sal%C4%83%20/%20un%20club%20%C8%99i%20vreau%20un%20parteneriat%20ASFitness." data-wa-gym data-umami-event="partner_gym" target="_blank" rel="noopener"><span data-t="b2b2btn">Hai să vorbim</span></a>
           </div>
         </div>
       </div>
@@ -866,7 +868,7 @@
       document.querySelectorAll('.lang button').forEach((b) => b.classList.toggle('on', b.dataset.lang === l));
       try { localStorage.setItem('asf.lang', l); } catch (e) {}
     }
-    document.querySelectorAll('.lang button').forEach((b) => b.addEventListener('click', () => setLang(b.dataset.lang)));
+    document.querySelectorAll('.lang button').forEach((b) => b.addEventListener('click', () => { setLang(b.dataset.lang); try { window.umami && window.umami.track('lang', { lang: b.dataset.lang }); } catch (e) {} }));
     let start = 'ro';
     try {
       const q = new URLSearchParams(location.search).get('lang');
@@ -874,6 +876,8 @@
     } catch (e) {}
     if (start === 'en') setLang('en'); else startRot('ro');
 
+
+    const track = (name, data) => { try { window.umami && window.umami.track(name, data); } catch (e) {} };
 
     // ===== QUIZ „Fă primul pas” =====
     // 6 întrebări → profilul tău + 3 sfaturi → aplicația, cu răspunsurile în adresă (pe site nu se salvează nimic).
@@ -974,8 +978,10 @@
         <button type="button" class="btn ghost" id="qredo">${t.redo}</button></div>
         <p class="qnote">${t.note}</p></div>`;
       document.getElementById('qredo').addEventListener('click', () => { qi = 0; ans = {}; renderQ(); });
+      track('quiz_complete', { sport: ans.sport, goal: ans.goal, days: ans.days });
+      qbody.querySelector('.qres a.btn.primary').addEventListener('click', () => track('quiz_to_app', { sport: ans.sport }));
     }
-    function openQuiz() { qi = 0; ans = {}; quiz.classList.add('open'); document.body.style.overflow = 'hidden'; renderQ(); }
+    function openQuiz() { track('quiz_start'); qi = 0; ans = {}; quiz.classList.add('open'); document.body.style.overflow = 'hidden'; renderQ(); }
     function closeQuiz() { quiz.classList.remove('open'); document.body.style.overflow = ''; }
     document.querySelectorAll('[data-quiz]').forEach((b) => b.addEventListener('click', openQuiz));
     document.getElementById('qclose').addEventListener('click', closeQuiz);
@@ -1121,8 +1127,10 @@
           <button type="button" class="btn ghost" id="credo">${t.redo}</button></div>
           <p class="qnote">${t.price}</p></div>`;
         document.getElementById('credo').addEventListener('click', () => { ci = 0; render(); });
+        track('coaching_complete', { level: ca.level, days: ca.days, onsite: ca.onsite });
+        body.querySelectorAll('.qres a.btn').forEach((a) => a.addEventListener('click', () => track('coaching_send', { via: a.href.startsWith('mailto') ? 'email' : 'whatsapp' })));
       }
-      const open = () => { ci = 0; ca = {}; box.classList.add('open'); document.body.style.overflow = 'hidden'; render(); };
+      const open = () => { track('coaching_start'); ci = 0; ca = {}; box.classList.add('open'); document.body.style.overflow = 'hidden'; render(); };
       const close = () => { box.classList.remove('open'); document.body.style.overflow = ''; };
       document.querySelectorAll('[data-coach]').forEach((b) => b.addEventListener('click', open));
       document.getElementById('cclose').addEventListener('click', close);
