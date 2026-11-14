@@ -710,9 +710,9 @@
             <svg viewBox="0 0 24 24" fill="#C4B5FD"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.6-4-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9 0-1.4.7-2 1-2.3.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.7 1.2 1.6 2 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.2z" /></svg>
             <div><b>WhatsApp</b><small>+40 786 775 538</small></div>
           </a>
-          <a class="reveal d3" href="mailto:asfitness1124@gmail.com">
+          <a class="reveal d3" href="mailto:contact@asfitness.ro">
             <svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="3" /><path d="m3 6 9 7 9-7" /></svg>
-            <div><b>Email</b><small>asfitness1124@gmail.com</small></div>
+            <div><b>Email</b><small>contact@asfitness.ro</small></div>
           </a>
         </div>
       </div>
@@ -1112,7 +1112,7 @@
         body.innerHTML = `<div class="qres"><div class="qcard"><div class="lbl">${t.title}</div>
           <ul class="qtips" style="margin-top:16px">${rows.map(([k, v]) => `<li><span><span style="color:var(--muted)">${k}</span><br /><b style="color:#fff">${v}</b></span></li>`).join('')}</ul></div>
           <div class="btns"><a class="btn primary big" target="_blank" rel="noopener" href="https://wa.me/40786775538?text=${encodeURIComponent(text)}">${t.send}</a>
-          <a class="btn ghost" href="mailto:asfitness1124@gmail.com?subject=${encodeURIComponent('Coaching 1:1')}&body=${encodeURIComponent(text)}">${t.mail}</a>
+          <a class="btn ghost" href="mailto:contact@asfitness.ro?subject=${encodeURIComponent('Coaching 1:1')}&body=${encodeURIComponent(text)}">${t.mail}</a>
           <button type="button" class="btn ghost" id="credo">${t.redo}</button></div>
           <p class="qnote">${t.price}</p></div>`;
         document.getElementById('credo').addEventListener('click', () => { ci = 0; render(); });
