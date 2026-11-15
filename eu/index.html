@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nu mă număra · ASFitness</title>
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="theme-color" content="#07060B" />
+  <style>
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: radial-gradient(ellipse at 50% 0%, rgba(124,58,237,.35), transparent 60%), #07060B; color: #fff; font-family: system-ui, -apple-system, sans-serif; padding: 24px; box-sizing: border-box; }
+    .card { max-width: 420px; text-align: center; background: rgba(22,20,32,.8); border: 1px solid rgba(167,139,250,.35); border-radius: 24px; padding: 30px 24px; }
+    h1 { font-size: 24px; margin: 10px 0 8px; }
+    p { color: #A6A2B8; line-height: 1.5; margin: 0 0 18px; }
+    .ok { font-size: 46px; }
+    button, a { display: inline-block; margin: 6px; padding: 12px 18px; border-radius: 14px; border: 1px solid rgba(255,255,255,.15); background: rgba(255,255,255,.05); color: #fff; font: 600 15px system-ui, sans-serif; text-decoration: none; cursor: pointer; }
+    a.main { background: linear-gradient(100deg, #6D28D9, #8B5CF6); border-color: transparent; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="ok" id="icon">✓</div>
+    <h1 id="title">Gata, nu te mai număr.</h1>
+    <p id="text">Pe acest dispozitiv, vizitele tale pe asfitness.ro nu mai intră în statistici (Umami). Deschide pagina asta o dată pe fiecare telefon sau calculator al tău.</p>
+    <a class="main" href="/">Mergi pe site</a>
+    <button type="button" id="toggle">Anulează</button>
+  </div>
+  <script>
+    // Umami ignoră vizitele din browserele în care e setat „umami.disabled” (documentat de Umami).
+    var KEY = 'umami.disabled';
+    function render() {
+      var off = false;
+      try { off = localStorage.getItem(KEY) === '1'; } catch (e) {}
+      document.getElementById('icon').textContent = off ? '✓' : '•';
+      document.getElementById('title').textContent = off ? 'Gata, nu te mai număr.' : 'Ești numărat din nou.';
+      document.getElementById('text').textContent = off
+        ? 'Pe acest dispozitiv, vizitele tale pe asfitness.ro nu mai intră în statistici (Umami). Deschide pagina asta o dată pe fiecare telefon sau calculator al tău.'
+        : 'Vizitele de pe acest dispozitiv intră din nou în statistici.';
+      document.getElementById('toggle').textContent = off ? 'Anulează' : 'Nu mă mai număra';
+    }
+    try { if (!sessionStorage.getItem('eu.seen')) { localStorage.setItem(KEY, '1'); sessionStorage.setItem('eu.seen', '1'); } } catch (e) {}
+    document.getElementById('toggle').addEventListener('click', function () {
+      try { localStorage.getItem(KEY) === '1' ? localStorage.removeItem(KEY) : localStorage.setItem(KEY, '1'); } catch (e) {}
+      render();
+    });
+    render();
+  </script>
+</body>
+</html>
