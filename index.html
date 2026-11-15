@@ -33,6 +33,7 @@
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    section[id], #parteneri { scroll-margin-top: 90px; }
     body { margin: 0; background: var(--bg); color: var(--text); font-family: 'DM Sans', -apple-system, Helvetica, Arial, sans-serif; line-height: 1.55; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
     a { color: inherit; }
     img { max-width: 100%; display: block; }
@@ -655,7 +656,7 @@
             <button type="button" class="btn primary" data-coach><span data-t="pl4btn">Aplică pentru Coaching 1:1</span></button>
           </div>
         </div>
-        <div class="b2b">
+        <div class="b2b" id="parteneri">
           <div class="b2b-card reveal d1">
             <div class="kicker" data-t="b2b1k">Ești antrenor?</div>
             <h3 data-t="b2b1h">Lucrezi cu imaginea ta, în aplicația ASFitness.</h3>
@@ -1138,6 +1139,14 @@
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && box.classList.contains('open')) close(); });
       if (location.hash === '#coaching') open();
     })();
+
+    // linkurile scurte (ex. asfitness.ro/antrenori → #parteneri): coborâm sigur la secțiune, după ce s-a așezat pagina
+    window.addEventListener('load', () => {
+      const id = location.hash.slice(1);
+      if (!id || id === 'primul-pas' || id === 'coaching') return;
+      const el = document.getElementById(id);
+      if (el) setTimeout(() => { el.querySelectorAll('.reveal').forEach((r) => r.classList.add('in')); window.scrollTo({ top: el.getBoundingClientRect().top + scrollY - 90, behavior: 'instant' }); }, 250);
+    });
 
     // bara de sus capătă fundal după ce derulezi
     const hdr = document.getElementById('hdr');
