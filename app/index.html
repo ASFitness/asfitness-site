@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Aplicația ASFitness</title>
+  <meta name="robots" content="noindex" />
+  <meta name="theme-color" content="#07060B" />
+  <style>body{margin:0;background:#07060B;color:#A78BFA;font:600 16px system-ui,sans-serif;display:grid;place-items:center;height:100vh}</style>
+  <script>
+    // LA LANSARE: pune aici linkurile din magazine. Cât timp sunt goale, toată lumea merge la aplicația web.
+    var APP_STORE = '';   // ex. https://apps.apple.com/app/idXXXXXXXXX
+    var PLAY_STORE = '';  // ex. https://play.google.com/store/apps/details?id=com.asfitness.app
+    var WEB_APP = 'https://asfitness-app.expo.app/?utm_source=link&utm_medium=short&utm_campaign=app';
+    var ua = navigator.userAgent || '';
+    var ios = /iPhone|iPad|iPod/i.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+    var android = /Android/i.test(ua);
+    location.replace(ios && APP_STORE ? APP_STORE : android && PLAY_STORE ? PLAY_STORE : WEB_APP);
+  </script>
+</head>
+<body><a href="https://asfitness-app.expo.app/" style="color:#A78BFA">Deschide aplicația ASFitness</a></body>
+</html>
