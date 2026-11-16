@@ -44,3 +44,5 @@
     .meta { font-size: 9px; } .m-tl { left: 34px; top: 70px; } .m-bl { left: 34px; } .m-br { right: 34px; }
     .switch { left: 50%; right: auto; transform: translateX(-50%); }
   }
+  html[lang=en] .lab.hot .k::after { content: ' · ONLY FOR HER'; }
+  @media (max-width: 760px) { html[lang=en] .lab.hot .k::after { content: ''; } }

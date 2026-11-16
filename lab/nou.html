@@ -355,7 +355,7 @@
   addEventListener('load', () => { loaded = true; });
   const tick = () => {
     const el = performance.now() - t0;
-    const target = loaded && el > 1300 ? 100 : Math.min(90, el / 18);
+    const target = (loaded && el > 1300) || el > 3500 ? 100 : Math.min(90, el / 18);
     p += (target - p) * .12 + (target > p ? .3 : 0); p = Math.min(p, target);
     bar.style.width = p + '%'; pctEl.textContent = Math.round(p) + '%';
     loader.querySelector('img').style.filter = `grayscale(${1 - p / 100}) brightness(${.55 + p / 220})`;

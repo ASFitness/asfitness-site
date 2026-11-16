@@ -1,8 +1,10 @@
 
 (() => {
+  // pozele se găsesc lângă acest fișier (merge și din /lab, și de pe pagina principală)
+  const BASE = new URL('../img/scan/', document.currentScript.src).href;
   // Etichetele: x, y = punctul de pe corp (0–1 din poză); side = partea pe care stă textul.
   const DATA = {
-    m: { img: '../img/scan/m.webp', name: 'Atlet 01', labels: [
+    m: { img: BASE + 'm.webp', name: 'Atlet 01', labels: [
       { x: .47, y: .09, side: 'l', k: 'Somn', v: '7h 40', s: 'Refacere bună, poți trage tare azi' },
       { x: .56, y: .24, side: 'r', k: 'Pregătire', v: '82%', s: 'Din WHOOP + cum te simți dimineața' },
       { x: .30, y: .40, side: 'l', k: 'Mușchii săptămânii', v: 'Piept · Spate', s: 'Ce ai lucrat și ce mai trebuie' },
@@ -10,7 +12,7 @@
       { x: .40, y: .66, side: 'l', k: 'Încărcare', v: 'Optimă', s: 'Raport efort acut / cronic 1,1' },
       { x: .63, y: .80, side: 'r', k: 'Hidratare', v: '2,8 L', s: 'Calculată din testul de transpirație' },
     ]},
-    f: { img: '../img/scan/f.webp', name: 'Atlet 02', labels: [
+    f: { img: BASE + 'f.webp', name: 'Atlet 02', labels: [
       { x: .49, y: .10, side: 'l', k: 'Somn', v: '8h 05', s: 'Refacere foarte bună' },
       { x: .55, y: .25, side: 'r', k: 'Pregătire', v: '76%', s: 'Din WHOOP + cum te simți dimineața' },
       { x: .31, y: .36, side: 'l', k: 'Mușchii săptămânii', v: 'Fesieri · Spate', s: 'Ce ai lucrat și ce mai trebuie' },
@@ -20,6 +22,8 @@
     ]},
   };
 
+  const EN = {"Somn": "Sleep", "Pregătire": "Readiness", "Mușchii săptămânii": "Muscles this week", "Nutriție": "Nutrition", "Încărcare": "Load", "Hidratare": "Hydration", "Ciclu": "Cycle", "Optimă": "Optimal", "Piept · Spate": "Chest · Back", "Fesieri · Spate": "Glutes · Back", "Ziua 9": "Day 9", "Refacere bună, poți trage tare azi": "Good recovery, you can push today", "Refacere foarte bună": "Very good recovery", "Din WHOOP + cum te simți dimineața": "From WHOOP + how you feel in the morning", "Ce ai lucrat și ce mai trebuie": "What you trained and what is left", "Proteine 160 g, după antrenamentul zilei": "Protein 160 g, based on today’s training", "Proteine 120 g, după antrenamentul zilei": "Protein 120 g, based on today’s training", "Raport efort acut / cronic 1,1": "Acute / chronic load ratio 1.1", "Raport efort acut / cronic 1,0": "Acute / chronic load ratio 1.0", "Calculată din testul de transpirație": "Calculated from your sweat test", "Normalul tău: antrenament și mese adaptate": "Your normal: training and meals adapted", "2.450 kcal": "2,450 kcal", "1.950 kcal": "1,950 kcal", "2,8 L": "2.8 L"};
+  const tr = (x) => (document.documentElement.lang === 'en' && EN[x]) || x;
   const hud = document.getElementById('hud'), body = document.getElementById('body'), cv = document.getElementById('cv');
   const ctx = cv.getContext('2d'), svg = document.getElementById('lines'), labsEl = document.getElementById('labs');
   const small = matchMedia('(max-width: 760px)').matches;
@@ -75,7 +79,7 @@
     DATA[cur].labels.forEach((L, idx) => {
       const el = document.createElement('div');
       el.className = 'lab ' + L.side + (L.hot ? ' hot' : '');
-      el.innerHTML = `<div class="k">${small ? '0' + (labEls.length + 1) + ' · ' : ''}${L.k}</div><div class="v">${L.v}</div><div class="s">${L.s}</div>`;
+      el.innerHTML = `<div class="k">${small ? '0' + (labEls.length + 1) + ' · ' : ''}${tr(L.k)}</div><div class="v">${tr(L.v)}</div><div class="s">${tr(L.s)}</div>`;
       labsEl.appendChild(el);
       const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
       g.innerHTML = '<path/><circle r="3"/><circle class="ring" r="5"/>' + (small ? `<text font-size="10" fill="#EDE9FE" font-family="JetBrains Mono">0${idx + 1}</text>` : '');
@@ -196,6 +200,7 @@
     labEls.forEach((o) => { o.shown = false; });
     setTimeout(() => { revealY = -0.08; scanY = -0.08; }, 10);
   }
+  document.querySelectorAll('[data-lang]').forEach((b) => b.addEventListener('click', () => setTimeout(() => { buildLabels(); labEls.forEach((o) => { if (revealY > o.L.y) { o.shown = true; o.el.classList.add('on'); o.g.classList.add('on'); } }); }, 0)));
   document.getElementById('bm').onclick = () => show('m', true);
   document.getElementById('bf').onclick = () => show('f', true);
 
