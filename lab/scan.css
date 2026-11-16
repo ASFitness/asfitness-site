@@ -1,0 +1,46 @@
+  /* SCENA */
+  .scan { position: relative; max-width: 1180px; margin: 28px auto 80px; padding: 0 16px; }
+  .hud { position: relative; height: min(80vh, 780px); min-height: 560px; border-radius: 22px; overflow: hidden;
+    background: radial-gradient(60% 55% at 50% 48%, rgba(124,58,237,.16), transparent 70%),
+                repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 1px, transparent 1px 4px); }
+  .hud::before { content: ''; position: absolute; inset: 0; pointer-events: none;
+    background-image: linear-gradient(rgba(167,139,250,.06) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,.06) 1px, transparent 1px);
+    background-size: 56px 56px; mask-image: radial-gradient(70% 70% at 50% 50%, #000 30%, transparent 85%); -webkit-mask-image: radial-gradient(70% 70% at 50% 50%, #000 30%, transparent 85%); }
+  .corner { position: absolute; width: 26px; height: 26px; border: 1.5px solid var(--violet-l); opacity: .7; }
+  .c1 { top: 14px; left: 14px; border-right: 0; border-bottom: 0; } .c2 { top: 14px; right: 14px; border-left: 0; border-bottom: 0; }
+  .c3 { bottom: 14px; left: 14px; border-right: 0; border-top: 0; } .c4 { bottom: 14px; right: 14px; border-left: 0; border-top: 0; }
+  .meta { position: absolute; font: 400 11px/1.6 'JetBrains Mono', monospace; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; z-index: 4; }
+  .meta b { color: var(--lav2); font-weight: 600; }
+  .m-tl { top: 26px; left: 52px; } .m-bl { bottom: 26px; left: 52px; } .m-br { bottom: 26px; right: 52px; text-align: right; }
+  .switch { position: absolute; top: 20px; right: 50px; z-index: 6; display: flex; padding: 4px; gap: 4px; border-radius: 999px;
+    background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(8px); }
+  .switch button { all: unset; cursor: pointer; font: 600 12px/1 'JetBrains Mono', monospace; letter-spacing: .14em; padding: 9px 16px; border-radius: 999px; color: var(--muted); transition: .25s; }
+  .switch button.on { background: linear-gradient(100deg,#6D28D9,#8B5CF6); color: #fff; box-shadow: 0 0 22px rgba(139,92,246,.45); }
+
+  .stage { position: absolute; inset: 0; perspective: 1100px; }
+  .body { position: absolute; left: 50%; top: 50%; transform-style: preserve-3d; transition: transform .25s ease-out; }
+  canvas { display: block; }
+  svg.lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 3; overflow: visible; }
+  svg.lines path { fill: none; stroke: var(--line); stroke-width: 1; stroke-dasharray: 400; stroke-dashoffset: 400; transition: stroke-dashoffset .7s ease; }
+  svg.lines circle { fill: #fff; opacity: 0; transition: opacity .3s; filter: drop-shadow(0 0 6px #A78BFA); }
+  svg.lines .on path { stroke-dashoffset: 0; } svg.lines .on circle { opacity: 1; }
+  svg.lines .ring { fill: none; stroke: var(--violet-l); stroke-width: 1; animation: ping 2.2s infinite; transform-box: fill-box; transform-origin: center; }
+  @keyframes ping { 0% { transform: scale(.4); opacity: .9 } 100% { transform: scale(2.6); opacity: 0 } }
+
+  .lab { position: absolute; z-index: 5; width: 220px; opacity: 0; transform: translateY(8px); transition: opacity .5s, transform .5s; pointer-events: none; }
+  .lab.on { opacity: 1; transform: none; }
+  .lab .k { font: 600 10.5px/1 'JetBrains Mono', monospace; letter-spacing: .2em; color: var(--violet-l); text-transform: uppercase; }
+  .lab .v { font: 800 34px/1 'Barlow Condensed', sans-serif; margin: 6px 0 4px; letter-spacing: .01em; }
+  .lab .s { font-size: 13px; color: var(--muted); line-height: 1.35; }
+  .lab.r { text-align: left; } .lab.l { text-align: right; }
+  .lab.hot .v { background: linear-gradient(100deg,#C4B5FD,#fff 50%,#A78BFA); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .lab.hot .k::after { content: ' · DOAR LA EA'; color: #fff; }
+  .note { text-align: center; color: #6e6a80; font-size: 12px; margin-top: 12px; }
+
+  @media (max-width: 760px) {
+    .hud { height: 800px; min-height: 0; }
+    .lab { text-align: left !important; } .lab .v { font-size: 24px; margin: 4px 0 0; } .lab .s { display: none; } .lab .k { font-size: 9.5px; letter-spacing: .14em; }
+    .lab.hot .k::after { content: ''; }
+    .meta { font-size: 9px; } .m-tl { left: 34px; top: 70px; } .m-bl { left: 34px; } .m-br { right: 34px; }
+    .switch { left: 50%; right: auto; transform: translateX(-50%); }
+  }
