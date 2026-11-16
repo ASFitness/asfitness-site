@@ -152,7 +152,7 @@
   .dcta { opacity: 0; transform: translateY(10px); transition: .6s; }
   .dcta.on { opacity: 1; transform: none; }
 
-  /* ===== DIN 2026 (povestea) ===== */
+  /* ===== DIN 2025 (povestea) ===== */
   #poveste { position: relative; min-height: 112vh; overflow: hidden; display: grid; place-items: center; padding: 120px 16px; background: #0d0a12; }
   #poveste .ell { position: absolute; left: 50%; top: 50%; width: 84vw; height: 76vh; transform: translate(-50%, -50%); border: 1px solid rgba(196,181,253,.12); border-radius: 50%; pointer-events: none; }
   .orb { position: absolute; left: 50%; top: 50%; will-change: transform; z-index: 1; }
@@ -185,6 +185,8 @@
 
   .rest { text-align: center; padding: 60px 16px 90px; color: #6e6a80; font-size: 13px; border-top: 1px solid rgba(255,255,255,.06); }
   .rest a { color: var(--lav); }
+  .foot { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 22px 16px 34px; color: #6e6a80; font-size: 12.5px; border-top: 1px solid rgba(255,255,255,.06); }
+  .foot img { width: 22px; height: 22px; border-radius: 6px; opacity: .8; }
 
   @media (max-width: 760px) {
     #drum { height: 300vh; } .map { width: 92vw; aspect-ratio: 400 / 860; max-height: 72vh; }
@@ -316,13 +318,13 @@
   </div>
 </section>
 
-<!-- DIN 2026 (povestea) -->
+<!-- DIN 2025 (povestea) -->
 <section id="poveste">
   <div class="ell"></div>
-  <div class="orb ph"><img src="../img/app-azi.jpg" alt="" loading="lazy" /></div><div class="orb ms"><b>09.10.2026</b>Primele ecrane</div><div class="orb ph"><img src="../img/scan/m.webp" alt="" loading="lazy" /></div><div class="orb ms"><b>15.10</b>WHOOP conectat</div><div class="orb ph"><img src="../img/app-nutritie.jpg" alt="" loading="lazy" /></div><div class="orb ms"><b>27.10</b>Fitness pentru toți</div><div class="orb ph"><img src="../img/rep/f1.webp" alt="" loading="lazy" /></div><div class="orb ms"><b>14.11</b>asfitness.ro e live</div><div class="orb ph"><img src="../img/scan/f.webp" alt="" loading="lazy" /></div><div class="orb ph"><img src="../img/app-chef.jpg" alt="" loading="lazy" /></div><div class="orb ms hot"><b>01.01.2027</b>Lansarea</div><div class="orb ph"><img src="../img/app-misiuni.jpg" alt="" loading="lazy" /></div>
+  <div class="orb ms"><b>07.2025</b>Începe ASFitness</div><div class="orb ph"><img src="../img/app-azi.jpg" alt="" loading="lazy" /></div><div class="orb ms"><b>10.2026</b>Prima zi a aplicației</div><div class="orb ph"><img src="../img/scan/m.webp" alt="" loading="lazy" /></div><div class="orb ms"><b>15.10</b>WHOOP conectat</div><div class="orb ph"><img src="../img/app-nutritie.jpg" alt="" loading="lazy" /></div><div class="orb ms"><b>27.10</b>Fitness pentru toți</div><div class="orb ph"><img src="../img/rep/f1.webp" alt="" loading="lazy" /></div><div class="orb ms"><b>14.11</b>asfitness.ro e live</div><div class="orb ph"><img src="../img/scan/f.webp" alt="" loading="lazy" /></div><div class="orb ph"><img src="../img/app-chef.jpg" alt="" loading="lazy" /></div><div class="orb ms hot"><b>01.01.2027</b>Lansarea</div><div class="orb ph"><img src="../img/app-misiuni.jpg" alt="" loading="lazy" /></div>
   <div class="pmid">
-    <h2>Din <small>octombrie</small> 2026,<br />construim sportivi<br /><small>mai buni</small> decât ieri</h2>
-    <p>ASFitness a pornit de la un antrenor care își urmărea sportivii în Excel. Azi e o aplicație completă, construită zi de zi, pentru sportivii din România și de peste tot.</p>
+    <h2>Din <small>iulie</small> 2025,<br />construim sportivi<br /><small>mai buni</small> decât ieri</h2>
+    <p>ASFitness a pornit în iulie 2025, de la un antrenor care își urmărea sportivii în Excel. Azi e o aplicație completă, construită zi de zi, pentru sportivii din România și de peste tot.</p>
     <div class="pl"><a href="#launch">Povestea ASFitness</a><a class="arr" href="#launch">→</a></div>
   </div>
 </section>
@@ -340,6 +342,7 @@
 </section>
 
 <div class="rest">Prototip. Mai jos rămâne restul site-ului (abonamente, antrenori, întrebări), ca acum. <a href="../">Vezi site-ul actual</a></div>
+<footer class="foot"><img src="../img/icon-512.png" alt="" /><span>© 2025–<span class="yr">2026</span> ASFitness Performance · Din iulie 2025</span></footer>
 
 <script src="scan.js"></script>
 <script>
@@ -661,7 +664,7 @@
     dcta.classList.toggle('on', k > .97);
   }
 
-  // ===== DIN 2026: pozele și momentele se rotesc pe o elipsă =====
+  // ===== DIN 2025: pozele și momentele se rotesc pe o elipsă =====
   const pov = document.getElementById('poveste'), orbs = [...pov.querySelectorAll('.orb')];
   const tilt = orbs.map(() => (Math.random() - .5) * 14);
   let povVis = false;
@@ -683,6 +686,7 @@
     requestAnimationFrame(povLoop);
   }
 
+  document.querySelectorAll('.yr').forEach((e) => (e.textContent = Math.max(2026, new Date().getFullYear())));
   let ticking = false;
   addEventListener('scroll', () => {
     if (ticking) return; ticking = true;
