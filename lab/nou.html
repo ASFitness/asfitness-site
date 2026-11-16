@@ -191,20 +191,13 @@
   <svg class="burn" id="burn" aria-hidden="true">
     <defs>
       <filter id="rough" x="-40%" y="-40%" width="180%" height="180%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="5" seed="7" result="n0" />
-        <feOffset in="n0" dx="0" dy="0" result="n"><animate attributeName="dx" dur="26s" values="0;60;0" repeatCount="indefinite" /><animate attributeName="dy" dur="19s" values="0;-40;0" repeatCount="indefinite" /></feOffset>
+        <feTurbulence type="fractalNoise" baseFrequency="0.011" numOctaves="5" seed="7" result="n">
+          <animate attributeName="baseFrequency" dur="18s" values="0.010;0.0135;0.010" repeatCount="indefinite" />
+        </feTurbulence>
         <feDisplacementMap class="disp" in="SourceGraphic" in2="n" scale="160" xChannelSelector="R" yChannelSelector="G" />
       </filter>
-      <filter id="rough2" x="-40%" y="-40%" width="180%" height="180%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.009" numOctaves="5" seed="7" result="n0" />
-        <feOffset in="n0" dx="0" dy="0" result="n"><animate attributeName="dx" dur="26s" values="0;60;0" repeatCount="indefinite" /><animate attributeName="dy" dur="19s" values="0;-40;0" repeatCount="indefinite" /></feOffset>
-        <feDisplacementMap class="disp" in="SourceGraphic" in2="n" scale="160" xChannelSelector="R" yChannelSelector="G" result="d" />
-        <feGaussianBlur in="d" stdDeviation="4" />
-      </filter>
       <mask id="hole"><rect class="mr" x="0" y="0" width="100" height="100" fill="#fff" /><ellipse id="e1" cx="50" cy="50" rx="0" ry="0" fill="#000" filter="url(#rough)" /></mask>
-      <mask id="hole2"><rect class="mr" x="0" y="0" width="100" height="100" fill="#fff" /><ellipse id="e2" cx="50" cy="50" rx="0" ry="0" fill="#000" filter="url(#rough2)" /></mask>
     </defs>
-    <rect class="mr" x="0" y="0" width="100" height="100" fill="#120a22" mask="url(#hole2)" />
     <rect class="mr" x="0" y="0" width="100" height="100" fill="#07060B" mask="url(#hole)" />
   </svg>
 </div>
@@ -327,28 +320,29 @@
   // marginile „arse” ca pe grail-app: negrul arde de la mijloc spre margini și se DESCHIDE
   // (la pornire se deschide puțin singur, apoi derularea îl arde complet până rămâne doar movul)
   const stk = document.getElementById('stk'), burn = document.getElementById('burn');
-  const e1 = document.getElementById('e1'), e2 = document.getElementById('e2');
+  const e1 = document.getElementById('e1');
   let W = 0, H = 0, intro = 0, introStart = 0;
   function burnSize() {
     W = stk.clientWidth; H = stk.clientHeight;
     burn.setAttribute('viewBox', `0 0 ${W} ${H}`);
     burn.querySelectorAll('.mr').forEach((r) => { r.setAttribute('width', W); r.setAttribute('height', H); });
-    const sc = Math.round(Math.min(W, H) * .17);
+    const sc = Math.round(Math.min(W, H) * .15);
     burn.querySelectorAll('.disp').forEach((d) => d.setAttribute('scale', sc));
     burnScroll();
   }
   function burnScroll() {
     const k = Math.min(1, Math.max(0, scrollY / (launch.offsetHeight - innerHeight)));
     const ease = (x) => 1 - Math.pow(1 - x, 3);
-    const o = .72 * ease(intro) + .5 * k; // 0 = negru, ~.62 = ca în poza ta, 1.2 = doar mov
+    // ca în prima variantă (care îți plăcea), dar invers: la derulare gaura CREȘTE până rămâne doar mov
+    const o = (.9 + .1 * ease(intro)) * (1 + k * .6);
     const mob = W < 760;
-    const rx = W * (mob ? .62 : .52) * o, ry = H * .56 * o;
-    [e1, e2].forEach((e, i) => { const f = i ? .975 : 1; e.setAttribute('cx', W / 2); e.setAttribute('cy', H * .48); e.setAttribute('rx', Math.max(0, rx * f)); e.setAttribute('ry', Math.max(0, ry * f)); });
+    e1.setAttribute('cx', W / 2); e1.setAttribute('cy', H * .5);
+    e1.setAttribute('rx', W * (mob ? .56 : .5) * o); e1.setAttribute('ry', H * .52 * o);
     stk.style.setProperty('--fade', Math.max(0, (k - .6) / .4).toFixed(2));
   }
   function openIntro(now) {
     if (!introStart) introStart = now;
-    intro = Math.min(1, (now - introStart) / 2200);
+    intro = Math.min(1, (now - introStart) / 900);
     burnScroll();
     if (intro < 1) requestAnimationFrame(openIntro);
   }
