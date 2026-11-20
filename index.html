@@ -353,6 +353,8 @@
 
 
     /* PREȚURI (deocamdată fără sume) */
+    .founders { margin-top: 30px; padding: 16px 20px; border-radius: 16px; background: linear-gradient(100deg, rgba(109,40,217,.28), rgba(139,92,246,.12)); border: 1px solid rgba(167,139,250,.35); color: var(--lav2, #EDE9FE); font-size: 15px; line-height: 1.55; }
+    .founders b { color: #fff; }
     .plans { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 44px; align-items: stretch; }
     @media (max-width: 1100px) { .plans { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 620px) { .plans { grid-template-columns: 1fr; } }
@@ -954,50 +956,57 @@ html[lang=en] .nx .lab.hot .k::after { content: ''; }
         <div class="kicker reveal" data-t="pr_kicker">Abonamente</div>
         <h2 class="reveal d1"><span data-t="pr_t1">Alege cât de departe</span> <span class="grad-text" data-t="pr_t2">vrei să mergi.</span></h2>
         <p class="lead reveal d2" data-t="pr_lead">Începi gratuit. Treci la nivelul următor doar când simți că ai nevoie. Fără costuri ascunse.</p>
-        <div class="plans">
-          <div class="plan reveal d1">
-            <h3>Standard</h3>
-            <div class="for" data-t="pl1f">Pentru oricine vrea să înceapă.</div>
-            <div class="price" data-t="pl1p">Gratuit</div>
-            <ul>
-              <li data-t="pl1a">Check-in de dimineață și inelele ASF</li>
-              <li data-t="pl1b">Recomandarea zilei</li>
-              <li data-t="pl1c">Jurnal de mese și ținte de nutriție</li>
-              <li data-t="pl1d">Misiuni, serii și XP</li>
-              <li data-t="pl1e">Chat cu antrenorul echipei tale</li>
-            </ul>
-            <button type="button" class="btn" data-quiz><span data-t="pl1btn">Fă primul pas</span></button>
-          </div>
-          <div class="plan hot reveal d2">
-            <span class="badge" data-t="pl2tag">RECOMANDAT</span>
-            <h3>Premium</h3>
-            <div class="for" data-t="pl2f">Pentru sportivul care vrea totul pus la punct.</div>
-            <div class="price"><span data-t="soon_price">În curând</span><small data-t="soon_price_s">prețul apare la lansare</small></div>
-            <ul>
-              <li class="plus" data-t="plA">Tot din Standard, plus:</li>
-              <li data-t="pl2a">ASFitness Chef complet: meniuri, rețete, meal prep</li>
-              <li data-t="pl2b">Program de sală generat pentru tine</li>
-              <li data-t="pl2c">Toate rapoartele PDF</li>
-              <li data-t="pl2d">Istoric complet, încărcare și ACWR</li>
-              <li data-t="pl2e">WHOOP și „Săptămâna ta”</li>
-            </ul>
-            <a class="btn primary" href="https://instagram.com/asfitness1124" target="_blank" rel="noopener" data-umami-event="notify_premium"><span data-t="notify">Anunță-mă la lansare</span></a>
-          </div>
-          <div class="plan reveal d3">
-            <h3>Ultra Premium</h3>
-            <div class="for" data-t="pl3f">Antrenorul ASF în buzunarul tău.</div>
-            <div class="price"><span data-t="soon_price2">În curând</span><small data-t="soon_price_s2">prețul apare la lansare</small></div>
-            <ul>
-              <li class="plus" data-t="plB">Tot din Premium, plus:</li>
-              <li data-t="pl3a">Antrenamente scrise de ASFitness</li>
-              <li data-t="pl3b">Meniuri personalizate ASFitness</li>
-              <li data-t="pl3c">Activare și refacere ghidate</li>
-              <li data-t="pl3d">Sesiuni live de grup incluse</li>
-              <li data-t="pl3e">Răspuns prioritar în chat</li>
-            </ul>
-            <a class="btn" href="https://instagram.com/asfitness1124" target="_blank" rel="noopener" data-umami-event="notify_ultra"><span data-t="notify2">Anunță-mă la lansare</span></a>
-          </div>
-          <div class="plan elite reveal d4">
+        <div class="founders reveal"><span data-t="pp_f"><b>Luna Fondatorilor · 1–31 ianuarie 2027.</b> Primii 100 primesc <b>Premium la 199,99 lei pe an</b> sau <b>Ultra la 449,99 lei pe an</b>, preț păstrat cât timp ai abonamentul. Rezervarea e gratuită.</span></div>
+          <div class="plans">
+            <div class="plan reveal d1">
+              <h3>Standard</h3>
+              <div class="for" data-t="pp1f">Pentru oricine vrea să înceapă.</div>
+              <div class="price" data-t="pp1p">Gratuit</div>
+              <ul>
+                <li data-t="pp1a">Check-in de dimineață și inelele ASF</li>
+                <li data-t="pp1b">Recomandarea zilei</li>
+                <li data-t="pp1c">Jurnal de antrenament și recorduri</li>
+                <li data-t="pp1d">Jurnal de mese, ținte de nutriție, cod de bare</li>
+                <li data-t="pp1e">Misiuni, serii și XP</li>
+                <li data-t="pp1g">WHOOP conectat</li>
+                <li data-t="pp1h">Echipa și chat cu antrenorul</li>
+                <li data-t="pp1i">ME vs me și ciclul tău</li>
+                <li data-t="pp1j">Istoric pe 7 zile</li>
+              </ul>
+              <button type="button" class="btn" data-quiz><span data-t="pp1btn">Fă primul pas</span></button>
+            </div>
+            <div class="plan hot reveal d2">
+              <span class="badge" data-t="pp2tag">RECOMANDAT</span>
+              <h3>Premium</h3>
+              <div class="for" data-t="pp2f">Pentru sportivul care vrea totul pus la punct.</div>
+              <div class="price"><span data-t="pp2p">39,99 lei / lună</span><small data-t="pp2ps">sau 349,99 lei pe an (−27%)</small></div>
+              <ul>
+                <li class="plus" data-t="pp2plus">Tot din Standard, plus:</li>
+                <li data-t="pp2a">Program de sală generat pentru tine, cu progresie</li>
+                <li data-t="pp2b">Muscle Recovery și volumul pe fiecare mușchi</li>
+                <li data-t="pp2c">Toate rapoartele PDF</li>
+                <li data-t="pp2d">ASFitness Chef: rețete și meniuri din ce ai în casă</li>
+                <li data-t="pp2e">Prevenție și Testul ASF</li>
+                <li data-t="pp2g">GPS, raport de meci și ACWR (fotbal)</li>
+                <li data-t="pp2h">Istoric complet și „Săptămâna ta”</li>
+              </ul>
+              <button type="button" class="btn primary" data-notify data-umami-event="notify_premium"><span data-t="pp2btn">Anunță-mă la lansare</span></button>
+            </div>
+            <div class="plan reveal d3">
+              <h3>Ultra Premium</h3>
+              <div class="for" data-t="pp3f">Antrenorul ASF în buzunarul tău.</div>
+              <div class="price"><span data-t="pp3p">79,99 lei / lună</span><small data-t="pp3ps">sau 699,99 lei pe an (−27%)</small></div>
+              <ul>
+                <li class="plus" data-t="pp3plus">Tot din Premium, plus:</li>
+                <li data-t="pp3a">Chef Ultra: bucătăria ta, meal prep, „Gătesc acum”</li>
+                <li data-t="pp3b">ASFitness Personal Coach</li>
+                <li data-t="pp3c">Antrenamente și meniuri scrise de antrenor</li>
+                <li data-t="pp3d">Sesiuni live de grup incluse</li>
+                <li data-t="pp3e">Răspuns prioritar în chat</li>
+              </ul>
+              <button type="button" class="btn" data-notify data-umami-event="notify_ultra"><span data-t="pp3btn">Anunță-mă la lansare</span></button>
+            </div>
+            <div class="plan elite reveal d4">
             <span class="badge" data-t="pl4tag">LOCURI LIMITATE</span>
             <h3>Coaching 1:1</h3>
             <div class="for" data-t="pl4f">Lucrezi direct cu un antrenor acreditat ASFitness. Totul construit pentru tine.</div>
@@ -1121,6 +1130,42 @@ html[lang=en] .nx .lab.hot .k::after { content: ''; }
   <script>
     // RO / EN: textele românești sunt în pagină; aici sunt cele în engleză. Limba aleasă se ține minte.
     const EN = {
+      pp_f: '<b>Founders Month · 1–31 January 2027.</b> The first 100 get <b>Premium for 199.99 lei a year</b> or <b>Ultra for 449.99 lei a year</b>, a price kept for as long as you stay subscribed. Reserving is free.',
+      pp1f: 'For anyone who wants to start.',
+      pp1p: 'Free',
+      pp1a: 'Morning check-in and the ASF rings',
+      pp1b: 'Daily recommendation',
+      pp1c: 'Workout log and records',
+      pp1d: 'Food log, nutrition targets, barcode scanner',
+      pp1e: 'Missions, streaks and XP',
+      pp1g: 'WHOOP connected',
+      pp1h: 'Your team and chat with your coach',
+      pp1i: 'ME vs me and your cycle',
+      pp1j: '7-day history',
+      pp1btn: 'Take the first step',
+      pp2tag: 'RECOMMENDED',
+      pp2f: 'For the athlete who wants everything dialled in.',
+      pp2p: '39.99 lei / month',
+      pp2plus: 'Everything in Standard, plus:',
+      pp2a: 'A gym program built for you, with progression',
+      pp2b: 'Muscle Recovery and volume per muscle',
+      pp2c: 'All PDF reports',
+      pp2d: 'ASFitness Chef: recipes and menus from what you have at home',
+      pp2e: 'Injury prevention and the ASF Test',
+      pp2g: 'GPS, match reports and ACWR (football)',
+      pp2h: 'Full history and “Your week”',
+      pp2btn: 'Notify me at launch',
+      pp3f: 'The ASF coach in your pocket.',
+      pp3p: '79.99 lei / month',
+      pp3plus: 'Everything in Premium, plus:',
+      pp3a: 'Chef Ultra: your kitchen, meal prep, “Cook now”',
+      pp3b: 'ASFitness Personal Coach',
+      pp3c: 'Workouts and menus written by your coach',
+      pp3d: 'Live group sessions included',
+      pp3e: 'Priority chat replies',
+      pp3btn: 'Notify me at launch',
+      pp2ps: 'or 349.99 lei a year (−27%)',
+      pp3ps: 'or 699.99 lei a year (−27%)',
       delacc: 'Delete your account',
       nav_launch: 'Launch',
       nx_step: 'Take the first step',
@@ -1644,6 +1689,7 @@ html[lang=en] .nx .lab.hot .k::after { content: ''; }
     const fill = (x) => x.replace('{n}', n);
     $('ph_kick').innerHTML = p.kick; $('ph_l1').innerHTML = fill(p.l1); $('ph_lm').innerHTML = fill(p.lm); $('ph_l2').innerHTML = fill(p.l2);
     $('ph_notify').textContent = PHASE === 'live' ? c.app : p.notify;
+    document.querySelectorAll('.plan [data-notify] span').forEach((x) => (x.textContent = PHASE === 'live' ? c.app : p.notify));
     $('ph_dh').textContent = p.dh; $('ph_dp').textContent = p.dp; $('ph_go').textContent = p.go;
     $('ph_dsm').textContent = c.dsm; $('ph_no').textContent = c.no; $('ph_in').placeholder = c.ph; $('ph_done').textContent = c.done;
     if (PHASE === 'founders' && spots === 0) { $('ph_notify').textContent = L() === 'en' ? 'Founder spots are full' : 'Locurile de fondator s-au ocupat'; }
