@@ -677,36 +677,36 @@ html[lang=en] .nx .lab.hot .k::after { content: ''; }
 <!-- 2. NUMĂRĂTOAREA -->
 <section id="launch"><div class="stk" id="stk">
   <div class="grain"></div>
-  <div class="kick" data-t="nx_kick">LANSARE · 01.01.2027 · 00:00</div>
+  <div class="kick" id="ph_kick">LUNA FONDATORILOR · 01.01.2027</div>
   <div class="clock" id="clock">
     <div class="g"><span class="n" id="cd">00</span><span class="u" data-t="nx_d">ZILE</span></div><span class="sep">:</span>
     <div class="g"><span class="n" id="ch">00</span><span class="u" data-t="nx_h">ORE</span></div><span class="sep">:</span>
     <div class="g"><span class="n" id="cm">00</span><span class="u" data-t="nx_m">MINUTE</span></div><span class="sep">:</span>
     <div class="g"><span class="n" id="cs">00</span><span class="u" data-t="nx_s">SECUNDE</span></div>
   </div>
-  <div class="bigdone" data-t="nx_done">AM LANSAT</div>
+  <div class="bigdone" id="ph_done">AM LANSAT</div>
   <div class="flash" id="flash"></div>
   <canvas id="shatter" aria-hidden="true"></canvas>
   <div class="hbot">
-    <p data-t="nx_l1">Pe <b>1 ianuarie 2027</b> lansăm ASFitness: antrenament, nutriție, refacere și echipă, într-o singură aplicație.</p>
+    <p id="ph_l1"></p>
     <div style="display:grid;justify-items:center;gap:12px">
-      <p class="m" style="display:none" data-t="nx_lm">Lansăm pe <b>1 ianuarie 2027</b>.</p>
-      <button class="cta" data-notify data-umami-event="notify_launch_open"><img src="img/icon-512.png" alt="" /><span data-t="nx_notify">Anunță-mă la lansare</span></button>
+      <p class="m" style="display:none" id="ph_lm"></p>
+      <button class="cta" data-notify data-umami-event="notify_launch_open"><img src="img/icon-512.png" alt="" /><span id="ph_notify">Anunță-mă</span></button>
       <div class="alt"><button type="button" data-quiz data-t="nx_quiz">Fă primul pas · 1 minut</button><a href="https://asfitness-app.expo.app" target="_blank" rel="noopener" data-umami-event="have_account" data-t="cta_have">Am deja cont</a></div>
     </div>
-    <p class="r" data-t="nx_l2">De ce 1 ianuarie? E ziua în care toată lumea promite că se schimbă. <b>Noi îți dăm cu ce.</b></p>
+    <p class="r" id="ph_l2"></p>
   </div>
 </div>
 </section>
 
 <dialog id="notify">
-  <h3 data-t="nx_dh">Fii primul.</h3>
-  <p data-t="nx_dp">Îți trimitem un singur email, pe 1 ianuarie 2027, când aplicația e live. Fără spam.</p>
+  <h3 id="ph_dh">Fii primul.</h3>
+  <p id="ph_dp"></p>
   <form method="dialog" id="nform">
-    <input type="email" required placeholder="adresa ta de email" autocomplete="email" />
-    <div class="row"><button class="no" value="cancel" formnovalidate>Mai târziu</button><button class="go" value="ok">Anunță-mă</button></div>
+    <input type="email" id="ph_in" required placeholder="adresa ta de email" autocomplete="email" />
+    <div class="row"><button class="no" id="ph_no" value="cancel" formnovalidate>Mai târziu</button><button class="go" id="ph_go" value="ok">Anunță-mă</button></div>
   </form>
-  <small data-t="nx_dsm">Prototip: deocamdată adresa nu se salvează.</small>
+  <small id="ph_dsm"></small>
 </dialog>
 
 <!-- 3. SCANAREA ATLETULUI -->
@@ -927,7 +927,7 @@ html[lang=en] .nx .lab.hot .k::after { content: ''; }
 <!-- DIN 2025 (povestea) -->
 <section id="poveste">
   <div class="ell"></div>
-  <div class="orb ms"><b>07.2025</b>Începe ASFitness</div><div class="orb ph"><img src="img/app-azi.jpg" alt="" loading="lazy" /></div><div class="orb ms"><b>10.2026</b>Prima zi a aplicației</div><div class="orb ph"><img src="img/scan/m.webp" alt="" loading="lazy" /></div><div class="orb ms"><b>15.10</b>WHOOP conectat</div><div class="orb ph"><img src="img/app-nutritie.jpg" alt="" loading="lazy" /></div><div class="orb ms"><b>27.10</b>Fitness pentru toți</div><div class="orb ph"><img src="img/rep/f1.webp" alt="" loading="lazy" /></div><div class="orb ms"><b>14.11</b>asfitness.ro e live</div><div class="orb ph"><img src="img/scan/f.webp" alt="" loading="lazy" /></div><div class="orb ph"><img src="img/app-chef.jpg" alt="" loading="lazy" /></div><div class="orb ms hot"><b>01.01.2027</b>Lansarea</div><div class="orb ph"><img src="img/app-misiuni.jpg" alt="" loading="lazy" /></div>
+  <div class="orb ms"><b>07.2025</b>Începe ASFitness</div><div class="orb ph"><img src="img/app-azi.jpg" alt="" loading="lazy" /></div><div class="orb ms"><b>10.2026</b>Prima zi a aplicației</div><div class="orb ph"><img src="img/scan/m.webp" alt="" loading="lazy" /></div><div class="orb ms"><b>15.10</b>WHOOP conectat</div><div class="orb ph"><img src="img/app-nutritie.jpg" alt="" loading="lazy" /></div><div class="orb ms"><b>27.10</b>Fitness pentru toți</div><div class="orb ph"><img src="img/rep/f1.webp" alt="" loading="lazy" /></div><div class="orb ms"><b>14.11</b>asfitness.ro e live</div><div class="orb ph"><img src="img/scan/f.webp" alt="" loading="lazy" /></div><div class="orb ph"><img src="img/app-chef.jpg" alt="" loading="lazy" /></div><div class="orb ms"><b>01.01.2027</b>Luna Fondatorilor</div><div class="orb ms hot"><b>01.02.2027</b>Lansarea</div><div class="orb ph"><img src="img/app-misiuni.jpg" alt="" loading="lazy" /></div>
   <div class="pmid">
     <h2 data-t="nx_ph">Din <small>iulie</small> 2025,<br />construim sportivi<br /><small>mai buni</small> decât ieri</h2>
     <p data-t="nx_pp">ASFitness a pornit în iulie 2025, de la un antrenor care își urmărea sportivii în Excel. Azi e o aplicație completă, construită zi de zi, pentru sportivii din România și de peste tot.</p>
@@ -1125,20 +1125,11 @@ html[lang=en] .nx .lab.hot .k::after { content: ''; }
       nav_launch: 'Launch',
       nx_step: 'Take the first step',
       nx_pov_btn: 'A day with ASFitness',
-      nx_notify: 'Notify me at launch',
       nx_quiz: 'Take the first step · 1 minute',
-      nx_kick: 'LAUNCH · 01.01.2027 · 00:00',
       nx_d: 'DAYS',
       nx_h: 'HOURS',
       nx_m: 'MINUTES',
       nx_s: 'SECONDS',
-      nx_done: 'WE ARE LIVE',
-      nx_l1: 'On <b>1 January 2027</b> we launch ASFitness: training, nutrition, recovery and team, in one app.',
-      nx_lm: 'We launch on <b>1 January 2027</b>.',
-      nx_l2: 'Why 1 January? It is the day everyone promises to change. <b>We give you the tools.</b>',
-      nx_dh: 'Be the first.',
-      nx_dp: 'We send you one email, on 1 January 2027, when the app goes live. No spam.',
-      nx_dsm: 'Only for the launch email. You can ask us to delete it at contact@asfitness.ro.',
       nx_sk: 'ASF scan',
       nx_sh: 'The app sees <em>all of you</em>.',
       nx_sp: 'Sleep, muscles, load, nutrition and the menstrual cycle: everything adapts to your body, whether you are a man or a woman.',
@@ -1621,20 +1612,63 @@ html[lang=en] .nx .lab.hot .k::after { content: ''; }
   };
   if (calm) { loader.remove(); document.body.classList.remove('lock'); document.getElementById('launch').classList.add('revealed'); } else tick();
 
-  // ===== 2. NUMĂRĂTOAREA până la 1 ianuarie 2027, 00:00 ora României =====
-  const TARGET = Date.parse('2027-01-01T00:00:00+02:00');
+  const SB = 'https://vrrnqkgukcdnykeobglj.supabase.co', SBK = 'sb_publishable_hi4OatsEILAoiIBSQzpNjg_jQbj4dUq';
+  // ===== 2. NUMĂRĂTOAREA PE ETAPE (decizia lui Ștefan, 20 nov 2026) =====
+  //   până la 1 ian 2027 · „pre”      → numără până la deschiderea Lunii Fondatorilor; butonul = „Anunță-mă” (lista)
+  //   1 – 31 ian 2027     · „founders” → numără până la lansare (1 feb); butonul = „Rezervă-ți locul de fondator” (100 de locuri)
+  //   din 1 feb 2027      · „live”     → „AM LANSAT” + „Descarcă aplicația”
+  const JAN1 = Date.parse('2027-01-01T00:00:00+02:00'), FEB1 = Date.parse('2027-02-01T00:00:00+02:00');
+  // ?faza=founders / ?faza=live = previzualizare (doar aspectul; serverul acceptă rezervări numai în ianuarie)
+  const FORCED = ['pre', 'founders', 'live'].includes(new URLSearchParams(location.search).get('faza')) ? new URLSearchParams(location.search).get('faza') : null;
+  const phaseNow = () => FORCED || (Date.now() < JAN1 ? 'pre' : Date.now() < FEB1 ? 'founders' : 'live');
+  let PHASE = phaseNow(), spots = null;
+  const PT = {
+    ro: {
+      pre: { kick: 'LUNA FONDATORILOR · 01.01.2027', l1: 'Pe <b>1 ianuarie 2027</b> se deschid <b>100 de locuri de fondator</b>: cel mai mic preț, păstrat cât timp ai abonamentul. Aplicația se lansează pe <b>1 februarie 2027</b>.', lm: '<b>1 ianuarie</b>: 100 de locuri de fondator · <b>1 februarie</b>: lansarea.', l2: 'De ce 1 ianuarie? E ziua în care toată lumea promite că se schimbă. <b>Noi îți dăm cu ce.</b>', notify: 'Anunță-mă', dh: 'Fii primul.', dp: 'Îți scriem pe 1 ianuarie, când se deschid cele 100 de locuri de fondator, și pe 1 februarie, la lansare. Fără spam.', go: 'Anunță-mă' },
+      founders: { kick: 'LANSARE · 01.02.2027 · 00:00', l1: '<b>Locurile de fondator sunt deschise.</b> Prețul de fondator rămâne al tău cât timp ai abonamentul. Rezervarea e gratuită.', lm: '<b>Mai sunt {n} din 100</b> de locuri de fondator.', l2: '<b>Mai sunt {n} din 100 de locuri.</b> Plătești doar după lansare, dacă vrei.', notify: 'Rezervă-ți locul de fondator', dh: 'Loc de fondator', dp: 'Rezervarea e gratuită. Pe 1 februarie primești linkul și ai 7 zile să-ți activezi prețul de fondator.', go: 'Rezervă locul' },
+      live: { kick: '', l1: '<b>ASFitness e live:</b> antrenament, nutriție, refacere și mindset, într-o singură aplicație.', lm: '<b>ASFitness e live.</b>', l2: 'Promisiune ținută. <b>Acum e rândul tău să-ți ții promisiunea față de tine.</b>', notify: 'Descarcă aplicația', dh: '', dp: '', go: '' },
+      common: { dsm: 'Folosim adresa doar pentru aceste emailuri. Poți cere oricând ștergerea la contact@asfitness.ro.', no: 'Mai târziu', ph: 'adresa ta de email', done: 'AM LANSAT', app: 'Descarcă aplicația' },
+    },
+    en: {
+      pre: { kick: 'FOUNDERS MONTH · 01.01.2027', l1: 'On <b>1 January 2027</b> we open <b>100 founder spots</b>: the lowest price, kept for as long as you stay subscribed. The app launches on <b>1 February 2027</b>.', lm: '<b>1 January</b>: 100 founder spots · <b>1 February</b>: launch.', l2: 'Why 1 January? It is the day everyone promises to change. <b>We give you the tools.</b>', notify: 'Notify me', dh: 'Be the first.', dp: 'We will email you on 1 January, when the 100 founder spots open, and on 1 February, at launch. No spam.', go: 'Notify me' },
+      founders: { kick: 'LAUNCH · 01.02.2027 · 00:00', l1: '<b>Founder spots are open.</b> Your founder price stays yours for as long as you stay subscribed. Reserving is free.', lm: '<b>{n} of 100</b> founder spots left.', l2: '<b>{n} of 100 spots left.</b> You only pay after launch, if you want.', notify: 'Reserve your founder spot', dh: 'Founder spot', dp: 'Reserving is free. On 1 February you get the link and have 7 days to activate your founder price.', go: 'Reserve my spot' },
+      live: { kick: '', l1: '<b>ASFitness is live:</b> training, nutrition, recovery and mindset, in one app.', lm: '<b>ASFitness is live.</b>', l2: 'Promise kept. <b>Now it’s your turn to keep the promise you made to yourself.</b>', notify: 'Get the app', dh: '', dp: '', go: '' },
+      common: { dsm: 'We only use your address for these emails. You can ask us to delete it at contact@asfitness.ro.', no: 'Later', ph: 'your email address', done: 'WE ARE LIVE', app: 'Get the app' },
+    },
+  };
+  const L = () => (document.documentElement.lang === 'en' ? 'en' : 'ro');
+  const $ = (id) => document.getElementById(id);
+  function applyPhase() {
+    const d = PT[L()], c = d.common, p = d[PHASE];
+    const n = spots == null ? '100' : String(spots);
+    const fill = (x) => x.replace('{n}', n);
+    $('ph_kick').innerHTML = p.kick; $('ph_l1').innerHTML = fill(p.l1); $('ph_lm').innerHTML = fill(p.lm); $('ph_l2').innerHTML = fill(p.l2);
+    $('ph_notify').textContent = PHASE === 'live' ? c.app : p.notify;
+    $('ph_dh').textContent = p.dh; $('ph_dp').textContent = p.dp; $('ph_go').textContent = p.go;
+    $('ph_dsm').textContent = c.dsm; $('ph_no').textContent = c.no; $('ph_in').placeholder = c.ph; $('ph_done').textContent = c.done;
+    if (PHASE === 'founders' && spots === 0) { $('ph_notify').textContent = L() === 'en' ? 'Founder spots are full' : 'Locurile de fondator s-au ocupat'; }
+  }
+  async function loadSpots() {
+    if (PHASE !== 'founders') return;
+    try {
+      const r = await fetch(SB + '/rest/v1/rpc/founder_spots_left', { method: 'POST', headers: { apikey: SBK, 'Content-Type': 'application/json' }, body: '{}' });
+      if (r.ok) { spots = Number(await r.json()); applyPhase(); }
+    } catch (err) { /* fără internet: rămâne textul fără număr */ }
+  }
+  document.querySelectorAll('[data-lang]').forEach((b) => b.addEventListener('click', () => setTimeout(applyPhase, 0)));
   const pad = (n) => String(n).padStart(2, '0');
   const els = ['cd', 'ch', 'cm', 'cs'].map((id) => document.getElementById(id));
   const launch = document.getElementById('launch');
   function clock() {
-    let s = Math.max(0, Math.floor((TARGET - Date.now()) / 1000));
-    if (s === 0) { launch.classList.add('launched'); document.querySelectorAll('[data-notify]').forEach((b) => { b.lastChild.textContent = 'Descarcă aplicația'; b.onclick = () => (location.href = 'app/'); }); return; }
+    const ph = phaseNow();
+    if (ph !== PHASE) { PHASE = ph; spots = null; applyPhase(); loadSpots(); }
+    if (PHASE === 'live') { launch.classList.add('launched'); return; }
+    let s = Math.max(0, Math.floor(((PHASE === 'pre' ? JAN1 : FEB1) - Date.now()) / 1000));
     const d = Math.floor(s / 86400); s %= 86400;
     const v = [d, Math.floor(s / 3600), Math.floor((s % 3600) / 60), s % 60];
     els.forEach((e, i) => { const t = pad(v[i]); if (e.textContent !== t) e.textContent = t; });
     setTimeout(clock, 1000 - (Date.now() % 1000));
   }
-  clock();
 
   // ===== LOGO-UL SE SPARGE ȘI APARE CRONOMETRUL =====
   // Variante: ?v=logo (implicit) sau ?v=2026 („2026” se sparge, vine 2027)
@@ -1830,28 +1864,46 @@ html[lang=en] .nx .lab.hot .k::after { content: ''; }
 
   // formularul
   const dlg = document.getElementById('notify');
-  document.querySelectorAll('[data-notify]').forEach((b) => b.addEventListener('click', () => { if (!launch.classList.contains('launched')) dlg.showModal(); }));
-  const SB = 'https://vrrnqkgukcdnykeobglj.supabase.co', SBK = 'sb_publishable_hi4OatsEILAoiIBSQzpNjg_jQbj4dUq';
-  const en = () => document.documentElement.lang === 'en';
+  document.querySelectorAll('[data-notify]').forEach((b) => b.addEventListener('click', () => {
+    if (PHASE === 'live') { location.href = 'app/'; return; }
+    if (PHASE === 'founders' && spots === 0) return;
+    applyPhase(); dlg.showModal();
+  }));
+  const en = () => L() === 'en';
+  const MSG = {
+    ok_pre: ['Te-am notat!', 'Ne vedem pe 1 ianuarie.', 'You are on the list!', 'See you on 1 January.'],
+    ok: ['Locul tău e rezervat!', 'Ești fondator ASFitness. Pe 1 februarie primești linkul pe email.', 'Your spot is reserved!', 'You are an ASFitness founder. On 1 February you will get the link by email.'],
+    already: ['Ești deja fondator.', 'Locul tău e păstrat. Ne vedem pe 1 februarie.', 'You are already a founder.', 'Your spot is kept. See you on 1 February.'],
+    full: ['S-au ocupat toate locurile.', 'Te anunțăm la lansare, cu oferta pentru ianuarie–februarie.', 'All spots are taken.', 'We will email you at launch with the launch offer.'],
+    closed: ['Încă puțină răbdare', 'Rezervările de fondator se deschid pe 1 ianuarie 2027.', 'Almost there', 'Founder reservations open on 1 January 2027.'],
+    err: ['', 'N-a mers. Încearcă din nou sau scrie-ne la contact@asfitness.ro.', '', 'Something went wrong. Try again or write to contact@asfitness.ro.'],
+  };
+  const say = (k) => { const m = MSG[k], i = en() ? 2 : 0; if (m[i]) dlg.querySelector('h3').textContent = m[i]; dlg.querySelector('p').textContent = m[i + 1]; };
   document.getElementById('nform').addEventListener('submit', async (e) => {
     if (!e.submitter || e.submitter.value !== 'ok') return;
     e.preventDefault();
-    const inp = dlg.querySelector('input'), go = dlg.querySelector('.go'), email = inp.value.trim().toLowerCase();
+    const inp = $('ph_in'), go = $('ph_go'), email = inp.value.trim().toLowerCase();
+    const source = (new URLSearchParams(location.search).get('utm_source') || 'site').slice(0, 60);
     go.disabled = true;
-    let ok = false;
+    let res = 'err';
     try {
-      const r = await fetch(SB + '/rest/v1/launch_waitlist', { method: 'POST', headers: { apikey: SBK, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
-        body: JSON.stringify({ email, lang: en() ? 'en' : 'ro', source: (new URLSearchParams(location.search).get('utm_source') || 'site').slice(0, 60) }) });
-      ok = r.ok || r.status === 409; // 409 = era deja pe listă
-    } catch (err) { ok = false; }
+      if (PHASE === 'founders') {
+        const r = await fetch(SB + '/rest/v1/rpc/reserve_founder', { method: 'POST', headers: { apikey: SBK, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ p_email: email, p_lang: en() ? 'en' : 'ro', p_source: source }) });
+        const v = r.ok ? await r.json() : 'err';
+        res = ['ok', 'already', 'full', 'closed'].includes(v) ? v : 'err';
+      } else {
+        const r = await fetch(SB + '/rest/v1/launch_waitlist', { method: 'POST', headers: { apikey: SBK, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+          body: JSON.stringify({ email, lang: en() ? 'en' : 'ro', source }) });
+        res = r.ok || r.status === 409 ? 'ok_pre' : 'err'; // 409 = era deja pe listă
+      }
+    } catch (err) { res = 'err'; }
     go.disabled = false;
-    if (ok) {
-      try { window.umami && window.umami.track('notify_launch'); } catch (err) {}
-      dlg.querySelector('h3').textContent = en() ? 'You are on the list!' : 'Te-am notat!';
-      dlg.querySelector('p').textContent = en() ? 'See you on 1 January.' : 'Ne vedem pe 1 ianuarie.';
-      inp.value = ''; setTimeout(() => dlg.close(), 1800);
-    } else {
-      dlg.querySelector('p').textContent = en() ? 'Something went wrong. Try again or write to contact@asfitness.ro.' : 'N-a mers. Încearcă din nou sau scrie-ne la contact@asfitness.ro.';
+    say(res);
+    if (res !== 'err' && res !== 'closed') {
+      try { window.umami && window.umami.track(PHASE === 'founders' ? 'founder_' + res : 'notify_launch'); } catch (err) {}
+      inp.value = ''; setTimeout(() => dlg.close(), 2200);
+      if (PHASE === 'founders') loadSpots();
     }
   });
 
@@ -1860,7 +1912,7 @@ html[lang=en] .nx .lab.hot .k::after { content: ''; }
   const cards = [...track.children];
   function buildPitch() {
     pitch.innerHTML = '';
-    const w = track.scrollWidth + innerWidth, step = innerWidth < 760 ? innerWidth * .55 : innerWidth * .26;
+    const w = track.scrollWidth + innerWidth, step = Math.max(120, innerWidth < 760 ? innerWidth * .55 : innerWidth * .26); // fereastra poate avea lățimea 0 (ascunsă) → altfel bucla nu se oprește
     const mins = ["15'", "30'", "45'", "60'", "75'", "90'", "90+'"];
     for (let i = 0; i * step < w * .7; i++) {
       const l = document.createElement('div'); l.className = 'ln'; l.style.left = innerWidth * .3 + i * step + 'px';
@@ -1970,6 +2022,7 @@ html[lang=en] .nx .lab.hot .k::after { content: ''; }
   }
 
   document.querySelectorAll('.yr').forEach((e) => (e.textContent = Math.max(2026, new Date().getFullYear())));
+  applyPhase(); loadSpots(); clock();
   let ticking = false;
   addEventListener('scroll', () => {
     if (ticking) return; ticking = true;

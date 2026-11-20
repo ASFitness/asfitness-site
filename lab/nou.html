@@ -583,7 +583,7 @@
   const cards = [...track.children];
   function buildPitch() {
     pitch.innerHTML = '';
-    const w = track.scrollWidth + innerWidth, step = innerWidth < 760 ? innerWidth * .55 : innerWidth * .26;
+    const w = track.scrollWidth + innerWidth, step = Math.max(120, innerWidth < 760 ? innerWidth * .55 : innerWidth * .26); // fereastra poate avea lățimea 0 (ascunsă) → altfel bucla nu se oprește
     const mins = ["15'", "30'", "45'", "60'", "75'", "90'", "90+'"];
     for (let i = 0; i * step < w * .7; i++) {
       const l = document.createElement('div'); l.className = 'ln'; l.style.left = innerWidth * .3 + i * step + 'px';
