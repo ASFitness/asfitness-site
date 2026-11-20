@@ -353,6 +353,20 @@
 
 
     /* PREȚURI (deocamdată fără sume) */
+    .nx .whp-sec { padding: 40px 16px 70px !important; }
+    .nx .whp { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 28px; align-items: center; }
+    .nx .whp h2 { font: 800 clamp(34px, 4.6vw, 60px)/.95 'Barlow Condensed', sans-serif; text-transform: uppercase; margin: 10px 0 14px; }
+    .nx .whp h2 em { font-style: normal; background: linear-gradient(100deg,#8B5CF6,#EDE9FE 55%,#7C3AED); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .nx .whp p { color: var(--muted); line-height: 1.6; max-width: 560px; }
+    .nx .whp-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .nx .whp-pills span { font: 600 12px/1 'DM Sans'; padding: 9px 12px; border-radius: 999px; border: 1px solid rgba(167,139,250,.35); color: #EDE9FE; background: rgba(124,58,237,.12); }
+    .nx .whp-card { padding: 24px; border-radius: 20px; background: linear-gradient(160deg, rgba(109,40,217,.32), rgba(20,16,32,.9) 60%); border: 1px solid rgba(167,139,250,.35); box-shadow: 0 20px 60px rgba(76,29,149,.35); }
+    .nx .whp-t { font: 800 26px/1 'Barlow Condensed'; text-transform: uppercase; }
+    .nx .whp-o { color: #EDE9FE; margin: 10px 0 18px; line-height: 1.5; }
+    .nx .whp-o b { color: #fff; }
+    .nx .whp-btn { display: inline-block; padding: 14px 20px; border-radius: 999px; background: linear-gradient(100deg,#6D28D9,#8B5CF6); color: #fff; text-decoration: none; font: 700 15px 'DM Sans'; box-shadow: 0 10px 30px rgba(124,58,237,.45); }
+    .nx .whp-n { color: var(--muted); font-size: 12px; margin-top: 14px; line-height: 1.5; }
+    @media (max-width: 860px) { .nx .whp { grid-template-columns: 1fr; } }
     .founders { margin-top: 30px; padding: 16px 20px; border-radius: 16px; background: linear-gradient(100deg, rgba(109,40,217,.28), rgba(139,92,246,.12)); border: 1px solid rgba(167,139,250,.35); color: var(--lav2, #EDE9FE); font-size: 15px; line-height: 1.55; }
     .founders b { color: #fff; }
     .plans { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 44px; align-items: stretch; }
@@ -731,6 +745,26 @@ html[lang=en] .nx .lab.hot .k::after { content: ''; }
   <div class="note" data-t="nx_note">Cifrele sunt un exemplu. În aplicație vezi datele tale reale.</div>
 </section>
 
+<!-- WHOOP · link de afiliere (Ștefan, 20 nov 2026) -->
+<section class="whp-sec">
+  <div class="whp">
+    <div class="whp-l">
+      <div class="kicker" data-t="w_k">Inside Data · WHOOP</div>
+      <h2 data-t="w_h">Somnul, HRV-ul și recovery-ul tău, <em>direct în planul tău.</em></h2>
+      <p data-t="w_p">Conectezi WHOOP o singură dată, iar ASFitness îți citește în fiecare dimineață cât ai dormit, cât de refăcut ești și cât efort ai făcut. Recomandarea zilei, inelul de pregătire și rapoartele țin cont de ele automat.</p>
+      <div class="whp-pills"><span data-t="w_1">Somn</span><span>HRV</span><span data-t="w_2">Puls în repaus</span><span>Recovery</span><span>Strain</span></div>
+    </div>
+    <div class="whp-r">
+      <div class="whp-card">
+        <div class="whp-t" data-t="w_ct">N-ai încă WHOOP?</div>
+        <div class="whp-o" data-t="w_co"><b>Brățara gratuită + o lună gratis</b>, cu abonamentul WHOOP, prin linkul ASFitness.</div>
+        <a class="whp-btn" href="https://join.whoop.com/ASFitness" target="_blank" rel="noopener sponsored" data-umami-event="whoop_offer"><span data-t="w_btn">Ia WHOOP cu linkul ASFitness</span> →</a>
+        <div class="whp-n" data-t="w_n">Link de afiliere: ASFitness primește un comision, pe tine nu te costă nimic în plus. ASFitness merge și fără WHOOP.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- DRUMUL TĂU (harta) -->
 <section id="drum">
   <div class="sticky">
@@ -1059,6 +1093,7 @@ html[lang=en] .nx .lab.hot .k::after { content: ''; }
           <details class="reveal"><summary data-t="q1">Am nevoie de un ceas WHOOP?</summary><p data-t="a1">Nu. Aplicația merge foarte bine doar cu check-in-ul de dimineață. Dacă ai WHOOP, îl conectezi și somnul, HRV-ul și pulsul în repaus vin singure.</p></details>
           <details class="reveal"><summary data-t="q2">Pe ce telefoane merge?</summary><p data-t="a2">Pe iPhone, pe Android și în browser, pe laptop. Antrenorii lucrează de obicei de pe laptop, sportivii de pe telefon.</p></details>
           <details class="reveal"><summary data-t="q3">Este doar pentru fotbaliști?</summary><p data-t="a3">Nu. Avem profil de fotbal, de fitness și sală și un profil Hybrid pentru cine face mai multe sporturi.</p></details>
+          <details class="reveal"><summary data-t="qw">Am nevoie de WHOOP?</summary><p data-t="aw">Nu. ASFitness merge foarte bine și fără. Cu WHOOP primești în plus, automat, somnul, HRV-ul, pulsul în repaus și recovery-ul. Dacă vrei unul, <a href="https://join.whoop.com/ASFitness" target="_blank" rel="noopener sponsored">cu linkul ASFitness</a> primești brățara gratuită + o lună gratis (link de afiliere).</p></details>
           <details class="reveal"><summary data-t="q4">Datele mele sunt în siguranță?</summary><p data-t="a4">Da. Fiecare sportiv își vede doar datele lui, iar antrenorul vede doar sportivii din echipa lui. Nu vindem date și nu facem reclame cu ele. Detalii în <a href="confidentialitate.html">politica de confidențialitate</a>.</p></details>
           <details class="reveal"><summary data-t="q5">Pot folosi aplicația cu echipa sau clienții mei?</summary><p data-t="a5">Da. Îți creezi echipa, le dai sportivilor codul echipei și îi vezi pe toți într-un singur ecran. Scrie-ne și te ajutăm să pornești.</p></details>
           <details class="reveal"><summary data-t="q6">În ce limbi este?</summary><p data-t="a6">Română, engleză, spaniolă și franceză.</p></details>
@@ -1130,6 +1165,17 @@ html[lang=en] .nx .lab.hot .k::after { content: ''; }
   <script>
     // RO / EN: textele românești sunt în pagină; aici sunt cele în engleză. Limba aleasă se ține minte.
     const EN = {
+      w_k: 'Inside Data · WHOOP',
+      w_h: 'Your sleep, HRV and recovery, <em>straight into your plan.</em>',
+      w_p: 'Connect WHOOP once, and every morning ASFitness reads how long you slept, how recovered you are and how much strain you took on. Your daily recommendation, readiness ring and reports use them automatically.',
+      w_1: 'Sleep',
+      w_2: 'Resting heart rate',
+      w_ct: 'No WHOOP yet?',
+      w_co: '<b>A free band + one month free</b>, with a WHOOP membership, through the ASFitness link.',
+      w_btn: 'Get WHOOP with the ASFitness link',
+      w_n: 'Affiliate link: ASFitness earns a commission, at no extra cost to you. ASFitness works without WHOOP too.',
+      qw: 'Do I need WHOOP?',
+      aw: 'No. ASFitness works great without it. With WHOOP you also get sleep, HRV, resting heart rate and recovery, automatically. If you want one, <a href="https://join.whoop.com/ASFitness" target="_blank" rel="noopener sponsored">with the ASFitness link</a> you get a free band + one month free (affiliate link).',
       pp_f: '<b>Founders Month · 1–31 January 2027.</b> The first 100 get <b>Premium for 199.99 lei a year</b> or <b>Ultra for 449.99 lei a year</b>, a price kept for as long as you stay subscribed. Reserving is free.',
       pp1f: 'For anyone who wants to start.',
       pp1p: 'Free',
